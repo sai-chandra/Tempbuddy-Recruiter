@@ -1,0 +1,31 @@
+<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> -->
+<suite name="Functional_Testcases">
+<listeners>
+<listener class-name="TBR.Listener.TestsListenerAdapter"/>
+</listeners>
+<!-- <test name="NewClientJobs">
+    <classes>
+        <class name="TBR.FunctionalTestcases.NewClientJobs" ></class>
+    </classes>
+</test> -->
+
+<!-- <test name="for LogIn">
+    <classes>
+        <class name="TBR.FunctionalTestcases.LogIn" ></class>  
+    </classes>
+</test> -->
+
+<test name="assignments-icon-open-start-soon">
+    <classes>
+        <class name="TBR.FunctionalTestcases.AssignmentsIcon" ></class>  
+    </classes>
+</test>
+
+<!-- <test name="General-Search">
+    <classes>
+        <class name="TBR.FunctionalTestcases.GeneralSearch" ></class>  
+    </classes>
+</test> -->
+
+</suite>
+

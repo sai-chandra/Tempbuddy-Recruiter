@@ -1,0 +1,8 @@
+<suite name="TempBuddySuite">
+<listeners>
+<listener class-name="TBR.Listener.TestsListenerAdapter"/>
+</listeners>
+<suite-files>
+   <suite-file path="./Regression_Testcases.xml"/>
+  </suite-files>
+</suite>

@@ -1,0 +1,43 @@
+<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> -->
+<suite name="Regression_Testcases">
+<test name="for Add-New-Client">
+    <classes>
+        <class name="TBR.Regression_Testcases.AddNewClient" ></class>  
+    </classes>
+</test>
+<test name="for Create-New-Candidate">
+    <classes>
+        <class name="TBR.Regression_Testcases.CreateNewCandidate" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-flow-dont-match-save-Job">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowDontMatchSaveJob" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-flow-dont-match-save-Job-Change-Margin">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowDontMatchChangeMargin" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-Flow-Assign-Candidate">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowAssignCandidate" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-flow-match-Candidate-to-Job">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowMatchCandidateToJob" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-flow-AdvertisePool-By-Application">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowAdvertisePoolByApplication" ></class>  
+    </classes>
+</test>
+<test name="for Jobs-flow-AdvertisePool-By-Assignment">
+    <classes>
+        <class name="TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment" ></class>  
+    </classes>
+</test>
+</suite>
