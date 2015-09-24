@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
-
+/*Adding new candidate*/
 public class CreateNewCandidate extends RegressionSuiteBase{
 	
 	@DataProvider
