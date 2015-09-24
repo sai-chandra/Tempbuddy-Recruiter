@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
-/*Assign Job to a candidate*/
+/*Assign Job to a candidates*/
 public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	
 	@DataProvider
