@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Functional_Testcases]">
+  <listeners>
+    <listener class-name="TBR.Listener.TestsListenerAdapter"/>
+  </listeners>
+  <test name="assignments-icon-open-start-soon(failed)">
+    <classes>
+      <class name="TBR.FunctionalTestcases.AssignmentsIcon">
+        <methods>
+          <include name="assignmentsIcon"/>
+          <include name="tearDown"/>
+          <include name="functionalSuiteBase"/>
+        </methods>
+      </class> <!-- TBR.FunctionalTestcases.AssignmentsIcon -->
+    </classes>
+  </test> <!-- assignments-icon-open-start-soon(failed) -->
+</suite> <!-- Failed suite [Functional_Testcases] -->

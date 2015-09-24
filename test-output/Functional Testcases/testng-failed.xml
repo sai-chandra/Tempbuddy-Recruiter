@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Functional Testcases]">
+  <test name="for LogIn(failed)">
+    <classes>
+      <class name="TBR.Functional_Testcases.LogIn">
+        <methods>
+          <include name="functionalSuiteBase"/>
+          <include name="logIn"/>
+        </methods>
+      </class> <!-- TBR.Functional_Testcases.LogIn -->
+    </classes>
+  </test> <!-- for LogIn(failed) -->
+</suite> <!-- Failed suite [Functional Testcases] -->

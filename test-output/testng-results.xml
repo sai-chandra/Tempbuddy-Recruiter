@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="137725" started-at="2015-09-23T15:28:23Z" finished-at="2015-09-23T15:30:40Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="137725" started-at="2015-09-23T15:28:23Z" finished-at="2015-09-23T15:30:40Z">
+      <class name="TBR.Regression_Testcases.JobsFlowAssignCandidate">
+        <test-method status="PASS" signature="regressionSuiteBase()[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@1f59a598]" name="regressionSuiteBase" is-config="true" duration-ms="47" started-at="2015-09-23T16:28:22Z" finished-at="2015-09-23T16:28:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- regressionSuiteBase -->
+        <test-method status="PASS" signature="jobsFlowAssignCandidate(java.util.Hashtable)[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@1f59a598]" name="jobsFlowAssignCandidate" duration-ms="137707" started-at="2015-09-23T16:28:23Z" data-provider="getJobsAssignCandidateData" finished-at="2015-09-23T16:30:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{CandidateName=Sherlock, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=, PayRateStep3=10, CategoryStep5=Driver, cPurchaseS=abc, cnameS1=Watsons, cMinBillHours=, runmode=, BillRateStep3=20, cTitleS2=jobLatestSep, cDescription=abc, BillingTypeStep3=Per hour, cNumPos=1}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- jobsFlowAssignCandidate -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@1f59a598]" name="tearDown" is-config="true" duration-ms="1" started-at="2015-09-23T16:30:40Z" finished-at="2015-09-23T16:30:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TBR.Regression_Testcases.JobsFlowAssignCandidate -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

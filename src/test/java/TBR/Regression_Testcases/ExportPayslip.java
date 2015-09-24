@@ -2,7 +2,7 @@ package TBR.Regression_Testcases;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
-
+/*export payslip*/
 public class ExportPayslip extends RegressionSuiteBase{
 	
 	@Test
