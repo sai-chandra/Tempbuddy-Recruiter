@@ -19,7 +19,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	@Test(dataProvider="getJobsAssignCandidateData")
 	public void jobsFlowAssignCandidate(Hashtable<String, String>data) throws InterruptedException{
 		openBrowser();
-		driver.get(CONFIG.getProperty("testSiteName"));
+		driver.get(CONFIG.getProperty("testSiteName2"));
 		login_Valid();
 		/*count number of unassigned jobs is stored before creation of job*/
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
@@ -74,7 +74,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    System.out.println("drag and drop success");
 	    //now click on reset to clear the values selected
 	    //getObject("biResetCalX").click();
-	    getObject("biCalConfirmX").click();
+	    getObjectByCss("biCalConfirmCss").click();
 	    
 	    String HoursFixed = hoursFixed("hoursRequiredId");
 	    System.out.println("number of hours fixed are"+HoursFixed);
@@ -151,12 +151,12 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    /*moves on to the Step 4 Set Approvers*/
 	    getObjectById("selectAgencyApproverId").click();
 	    getObject("addAgencyApproverX").click();
-	    getObject("newAgencyApproverX").click();
-	    getObject("newApproverCloseX").click();
+	    //getObject("newAgencyApproverX").click();
+	    //getObject("newApproverCloseX").click();
 	    getObjectById("selectClientContactId").click();
 	    getObject("addClientContactX").click();
-	    getObject("newClientContactX").click();
-	    getObject("newClientCloseX").click();
+	    //getObject("newClientContactX").click();
+	    //getObject("newClientCloseX").click();
 	    getObjectByCss("nextStep4cSS").click();
 	    
 	    //moves on to criteria Step 5

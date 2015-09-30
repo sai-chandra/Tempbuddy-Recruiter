@@ -75,9 +75,9 @@ public class JobsFlowAdvertisePoolByAssignment extends RegressionSuiteBase{
     System.out.println("clicked on next in Step 2");
     
     //movin on to  Step 3 billing information
-    getObjectById("templateNameId").click();
-    getObject("newTemplateX").click();
-    getObject("closeNewTemplateX").click();
+    //getObjectById("templateNameId").click();
+    //getObject("newTemplateX").click();
+   // getObject("closeNewTemplateX").click();
     getObjectById("billingTypeId").sendKeys(data.get("BillingTypeStep3"));
     getObjectById("payRateId").click();
     getObjectById("payRateId").clear();

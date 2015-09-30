@@ -6,9 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 /*Adding new candidate*/
 public class CreateNewCandidate extends RegressionSuiteBase{
@@ -133,4 +135,9 @@ public class CreateNewCandidate extends RegressionSuiteBase{
     Assert.assertEquals(candidateNameAppeared, candidateName);
     System.out.println("new candidate saved successfully");
     }
+	
+	@AfterMethod
+	public void screenShot(){
+		CaptureScreenShot.captureScreenShot(driver, "CreateNewCandidate");
+	}
 }

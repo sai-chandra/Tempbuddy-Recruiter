@@ -3,9 +3,11 @@ package TBR.Regression.JobsSection;
 import java.util.Hashtable;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
 public class AssignJob extends JobsRegressionSuiteBase{
@@ -87,6 +89,10 @@ public class AssignJob extends JobsRegressionSuiteBase{
 		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
 		LOGS.debug("Success! if the before and after conditions are not same then all jobs increment is working");
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
+	    }
 	    
-}
+	    @AfterMethod
+        public void screenShot(){
+	    CaptureScreenShot.captureScreenShot(driver, "AssignJob");
+        }
 }

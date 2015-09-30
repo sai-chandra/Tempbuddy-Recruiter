@@ -6,32 +6,17 @@
   </listeners>
   <test name="for Jobs-flow-dont-match-save-Job-Change-Margin(failed)">
     <classes>
+      <class name="TBR.Regression_Testcases.CheckBranding">
+        <methods>
+          <include name="regressionSuiteBase"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- TBR.Regression_Testcases.CheckBranding -->
       <class name="TBR.Regression_Testcases.JobsFlowDontMatchChangeMargin">
         <methods>
           <include name="jobsFlowChangeMargin" invocation-numbers="0"/>
         </methods>
       </class> <!-- TBR.Regression_Testcases.JobsFlowDontMatchChangeMargin -->
-      <class name="TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment">
-        <methods>
-          <include name="regressionSuiteBase"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment -->
     </classes>
   </test> <!-- for Jobs-flow-dont-match-save-Job-Change-Margin(failed) -->
-  <test name="for Jobs-flow-match-Candidate-to-Job(failed)">
-    <classes>
-      <class name="TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment">
-        <methods>
-          <include name="regressionSuiteBase"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment -->
-      <class name="TBR.Regression_Testcases.JobsFlowMatchCandidateToJob">
-        <methods>
-          <include name="jobsFlowAssignJobRough" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- TBR.Regression_Testcases.JobsFlowMatchCandidateToJob -->
-    </classes>
-  </test> <!-- for Jobs-flow-match-Candidate-to-Job(failed) -->
 </suite> <!-- Failed suite [Regression_Testcases] -->

@@ -17,7 +17,7 @@ public class RegressionSuiteBase extends TestBase {
 	@AfterSuite
 	public void tearDown() throws InterruptedException{
 	//Thread.sleep(6000);
-	//driver.quit();
+	driver.close();
 	}
 	
 	

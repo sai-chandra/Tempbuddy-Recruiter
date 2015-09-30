@@ -3,9 +3,11 @@ package TBR.Regression.JobsSection;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
 public class AdvertisePoolByAssignment extends JobsRegressionSuiteBase{
@@ -51,5 +53,10 @@ public class AdvertisePoolByAssignment extends JobsRegressionSuiteBase{
 	    
 	    /*Advertise Job Step-4 Set Message*/
 	    step4AdvertiseJobSetMessage(data);
-   }
+        }
+	    
+	    @AfterMethod
+        public void screenShot(){
+        CaptureScreenShot.captureScreenShot(driver, "AdvetisePoolByAssignment");
+        }
 }

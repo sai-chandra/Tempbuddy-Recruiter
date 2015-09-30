@@ -1,11 +1,20 @@
 package TBR.Regression_Testcases;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Hashtable;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 /*adding a new client*/
 public class AddNewClient extends RegressionSuiteBase{
@@ -73,10 +82,15 @@ public class AddNewClient extends RegressionSuiteBase{
 	    
 	    Thread.sleep(5000);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
-	    System.out.println("the client appeared on the screen is" +clientAppearedOnScreen);
+	    System.out.println("the client appeared on the screen is " +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);
 	    System.out.println("new client is created successfully");
 	    
+	    }
+	
+	@AfterMethod
+	public void screenShot(){
+		CaptureScreenShot.captureScreenShot(driver, "AddNewClient");
 	}
-
 }
+
