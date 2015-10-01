@@ -9,6 +9,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import TBR.Regression_Testcases.RegressionSuiteBase;
+import TBR.TestUtil.Email;
+import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
 
 public class JobsFlowAssignRough extends RegressionSuiteBase{
@@ -202,7 +204,7 @@ public class JobsFlowAssignRough extends RegressionSuiteBase{
 	    //getObjectByLinkText("candidateNameStep6Lt").click();
 	    //explicitWait("candidateName1Step6Lt");
 	    //getSelectedByText("candidateNameStep6", "tempBuddy ( s.padmanabuni@tempbuddy.co )");
-	    getObjectByLinkText("candidateName1Step6Lt").click();
+	    getObjectByLinkText("jackCandidateLt").click();
 	    //explicitWaitCss("finishCss");
 	    //explicitWaitCss("finishCss");
 	    Thread.sleep(5000);
@@ -274,6 +276,27 @@ public class JobsFlowAssignRough extends RegressionSuiteBase{
 		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
 		
+		 System.out.println("Reading email");
+		 Email email = new Email();
+		       String contentEmail;
+		try {
+		System.out.println("try");
+		contentEmail = email.receiveAndDeleteMultiPart("jack.tempbuddy@gmail.com", "exercise", "New Assignment from Staging agency via SkillCorps");
+		System.out.println(contentEmail);
+		HTMLParser html = new HTMLParser();
+		System.out.println("parser");
+		System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
+		String decideAssignmentURL = html.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmail);
+		goToUrl(decideAssignmentURL);
+		System.out.println(decideAssignmentURL);
+		} catch (Exception e) {
+		System.out.println("catch");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		System.out.println("Finish");
+		}
+		
 		//on assignments page
 	/*	waitForElement(10, "assignLinKX");
 		getObject("assignLinKX").click();
@@ -302,4 +325,4 @@ public class JobsFlowAssignRough extends RegressionSuiteBase{
 	}
 	
 
-}
+

@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Default_suite">
-              <span class="suite-name border-failed">Default suite</span>
+              <span class="suite-name border-passed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\tempbuddy\AppData\Local\Temp\testng-eclipse--619900007\testng-customsuite.xml</span>
+                    <span>C:\Users\tempbuddy\AppData\Local\Temp\testng-eclipse-1756641192\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -90,21 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content failed suite-Default_suite">
+                    <div class="method-list-content passed suite-Default_suite">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="TBR.Regression_Testcases.AddNewClient" hash-for-method="addNewClient({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Stree...)">addNewClient({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Stree...)</a> <!-- method navigator-link -->
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="TBR.Regression_Testcases.JobsFlowAssignCandidate" hash-for-method="jobsFlowAssignCandidate({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=...)">jobsFlowAssignCandidate({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Default_suite -->
+                    </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,59 +116,26 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-failed">
+          <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">TBR.Regression_Testcases.AddNewClient</span>
+              <img src="passed.png"/>
+              <span class="class-name">TBR.Regression_Testcases.JobsFlowAssignCandidate</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="addNewClient({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Stree...)">
-                  </a> <!-- addNewClient({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Stree...) -->
-                  <span class="method-name">addNewClient</span>
-                  <span class="parameters">({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Street, Dublin 1 , AddContactPhone=353899657555, ExternalRef=123, runmode=, AddContactAlternativePhone=12345, AddContactEmail=s.padmanabuni@tempbuddy.co, AddContactName=ClientApprover, AddClientAddress=Dublin 1, Parnell Street, CompanyPosition=Project Manager, AddLocationLabel=BaseLocation2, AddContactAlternativePhone1=678910, AddClientsPhones=35381234568})</span>
-                  <div class="stack-trace">java.lang.AssertionError: expected [clientName] but found [Client28]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at TBR.Regression_Testcases.AddNewClient.addNewClient(AddNewClient.java:86)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-
-</div> <!-- stack-trace -->
+                  <a name="jobsFlowAssignCandidate({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=...)">
+                  </a> <!-- jobsFlowAssignCandidate({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=...) -->
+                  <span class="method-name">jobsFlowAssignCandidate</span>
+                  <span class="parameters">({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=, PayRateStep3=10, CategoryStep5=Driver, cPurchaseS=abc, cnameS1=Watsons, cMinBillHours=, runmode=, BillRateStep3=20, cTitleS2=jobLatestSep, cDescription=abc, BillingTypeStep3=Per hour, cNumPos=1})</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-failed -->
+          </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\tempbuddy\AppData\Local\Temp\testng-eclipse--619900007\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\tempbuddy\AppData\Local\Temp\testng-eclipse-1756641192\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -177,7 +144,7 @@
 &lt;suite name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;TBR.Regression_Testcases.AddNewClient&quot;/&gt;
+      &lt;class name=&quot;TBR.Regression_Testcases.JobsFlowAssignCandidate&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -219,14 +186,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'addNewClient')
-data.setCell(0, 2, 'TBR.Regression_Testcases.AddNewClient')
-data.setCell(0, 3, 50966);
+data.setCell(0, 1, 'jobsFlowAssignCandidate')
+data.setCell(0, 2, 'TBR.Regression_Testcases.JobsFlowAssignCandidate')
+data.setCell(0, 3, 154409);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 50 seconds</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -252,24 +219,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">TBR.Regression_Testcases.AddNewClient</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">TBR.Regression_Testcases.JobsFlowAssignCandidate</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">regressionSuiteBase</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">addNewClient({Extension=1234, AddContactExten=123, PhoneNumber=353899647554, Name=Client28, Address=Parnell Stree...)</span>
-                <span class="method-start">57 ms</span>
+                <span class="method-name">jobsFlowAssignCandidate({CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=...)</span>
+                <span class="method-start">59 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">screenShot</span>
-                <span class="method-start">51026 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">51291 ms</span>
+                <span class="method-start">154528 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

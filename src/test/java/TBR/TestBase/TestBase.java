@@ -612,4 +612,9 @@ public class TestBase {
 			    Assert.assertEquals(SuccessMessage, "job\nOperation success");
 			    System.out.println("success message matched and therefore Job is created successfully");
 			    }
+				
+				//goes to the url
+				public void goToUrl(String url){
+					driver.navigate().to(url);
+					}
 			}

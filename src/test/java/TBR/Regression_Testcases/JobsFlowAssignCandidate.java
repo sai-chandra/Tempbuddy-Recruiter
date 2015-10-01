@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.Email;
+import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
 /*Assign Job to a candidates*/
 public class JobsFlowAssignCandidate extends RegressionSuiteBase{
@@ -178,7 +180,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    //getObjectByLinkText("candidateNameStep6Lt").click();
 	    //explicitWait("candidateName1Step6Lt");
 	    //getSelectedByText("candidateNameStep6", "tempBuddy ( s.padmanabuni@tempbuddy.co )");
-	    getObjectByLinkText("sherlockCandidateLt").click();
+	    getObjectByLinkText("jackCandidateLt").click();
 	    //explicitWaitCss("finishCss");
 	    //explicitWaitCss("finishCss");
 	    Thread.sleep(5000);
@@ -242,8 +244,57 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
 	    
+		 System.out.println("Reading email");
+		 Email email = new Email();
+		       String contentEmail;
+		try {
+		System.out.println("try");
+		contentEmail = email.receiveAndDeleteMultiPart("jack.tempbuddy@gmail.com", "exercise", "New Assignment from Staging agency via SkillCorps");
+		System.out.println(contentEmail);
+		HTMLParser html = new HTMLParser();
+		System.out.println("parser");
+		System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
+		String decideAssignmentURL = html.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmail);
+		goToUrl(decideAssignmentURL);
+		System.out.println(decideAssignmentURL);
+		String AssignmentRejected = getObjectCssText("CandidateRejectCss");
+	    System.out.println(AssignmentRejected);
+	    Assert.assertEquals(AssignmentRejected, "Assignment Rejected. SkillCorps will notify Staging agency");
+	    System.out.println("Reject messages matched");
+		} catch (Exception e) {
+		System.out.println("catch");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		System.out.println("Finish");
+		//driver.close();
 	    
+	    //Reading email from Client
+	    System.out.println("Reading email");
+	    Email emailClient = new Email();
+	    String contentEmailClient;
+	    try {
+	    System.out.println("try");
+	    contentEmailClient = emailClient.receiveAndDeleteMultiPart("s.padmanabuni@tempbuddy.co", "tempbuddy", "Worker confirmation - Input Required");
+	    System.out.println(contentEmailClient);
+	    HTMLParser html1 = new HTMLParser();
+	    System.out.println("parser");
+	    System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
+	    String decideAssignmentURL1 = html1.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmailClient);
+	    goToUrl(decideAssignmentURL1);
+	    System.out.println(decideAssignmentURL1);
+	    String LinkExpired = getObjectCssText("ClientlinkExpiredCss");
+	    System.out.println(LinkExpired);
+	    Assert.assertEquals(LinkExpired, "The link has expired");
+	    System.out.println("Link expired message matched");
+	    } catch (Exception e) {
+	    System.out.println("catch");
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	    }
+	    System.out.println("Finish");
+	}
 	}
 	
 
-}
+

@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="TBR.Regression_Testcases.AddNewClient">
+      <class name="TBR.Regression_Testcases.JobsFlowAssignCandidate">
         <methods>
+          <include name="jobsFlowAssignCandidate" invocation-numbers="0"/>
           <include name="regressionSuiteBase"/>
-          <include name="addNewClient" invocation-numbers="0"/>
-          <include name="screenShot"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- TBR.Regression_Testcases.AddNewClient -->
+      </class> <!-- TBR.Regression_Testcases.JobsFlowAssignCandidate -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
