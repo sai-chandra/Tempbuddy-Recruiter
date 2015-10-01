@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import TBR.TestUtil.Email;
 import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
-/*Assign Job to a candidates*/
+/*Assign Job to a worker*/
 public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	
 	@DataProvider
