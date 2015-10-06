@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
-
+/*Adding new Template*/
 public class AddSelectNewTemplate extends JobsRegressionSuiteBase{
 	
 	@DataProvider
