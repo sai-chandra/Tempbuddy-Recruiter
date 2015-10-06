@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import TBR.TestUtil.CaptureScreenShot;
+import TBR.TestUtil.Email;
+import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
 
 public class AssignJob extends JobsRegressionSuiteBase{
@@ -58,7 +60,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 	    getObjectById("assignCandidateId").click();
 	    getObjectById("candidateNameStep6").click();
 	    getObjectById("candidateNameStep6").sendKeys(data.get("CandidateName"));
-	    getObjectByLinkText("sherlockCandidateLt").click();
+	    getObjectByLinkText("jackCandidateLt").click();
 	    Thread.sleep(5000);
 	    getObjectByCss("finishCss").click();
 	    LOGS.debug("end of Step6: Match Jobs");
@@ -89,7 +91,57 @@ public class AssignJob extends JobsRegressionSuiteBase{
 		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
 		LOGS.debug("Success! if the before and after conditions are not same then all jobs increment is working");
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
+		
+		 System.out.println("Reading email");
+		 Email email = new Email();
+		       String contentEmail;
+		try {
+		System.out.println("try");
+		contentEmail = email.receiveAndDeleteMultiPart("jack.tempbuddy@gmail.com", "exercise", "New Assignment from Staging agency via TempBuddy");
+		System.out.println(contentEmail);
+		HTMLParser html = new HTMLParser();
+		System.out.println("parser");
+		System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
+		String decideAssignmentURL = html.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmail);
+		goToUrl(decideAssignmentURL);
+		System.out.println(decideAssignmentURL);
+		String AssignmentRejected = getObjectCssText("CandidateRejectCss");
+	    System.out.println(AssignmentRejected);
+	    Assert.assertEquals(AssignmentRejected, "Assignment Rejected. TempBuddy will notify Staging agency");
+	    System.out.println("Reject messages matched");
+		} catch (Exception e) {
+		System.out.println("catch");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		System.out.println("Finish");
+		
+		/*//Reading email from Client
+	    System.out.println("Reading email");
+	    Email emailClient = new Email();
+	    String contentEmailClient;
+	    try {
+	    System.out.println("try");
+	    contentEmailClient = emailClient.receiveAndDeleteMultiPart("s.padmanabuni@tempbuddy.co", "tempbuddy", "Worker confirmation - Input Required");
+	    System.out.println(contentEmailClient);
+	    HTMLParser html1 = new HTMLParser();
+	    System.out.println("parser");
+	    System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
+	    String decideAssignmentURL1 = html1.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmailClient);
+	    goToUrl(decideAssignmentURL1);
+	    System.out.println(decideAssignmentURL1);
+	    String LinkExpired = getObjectCssText("ClientlinkExpiredCss");
+	    System.out.println(LinkExpired);
+	    Assert.assertEquals(LinkExpired, "This assignment is being reassigned by the agency. Please wait for the next approval email.");
+	    System.out.println("Link expired message matched");
+	    } catch (Exception e) {
+	    System.out.println("catch");
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
 	    }
+	    System.out.println("Finish");*/
+	    }
+	
 	    
 	    @AfterMethod
         public void screenShot(){
