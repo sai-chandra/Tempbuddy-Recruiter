@@ -22,7 +22,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 	@Test(dataProvider="getAssignJobData")
 	public void assignJobToCandidate(Hashtable<String, String> data) throws InterruptedException{
 		
-		/*browserUrl() opens up a browser, goes to Staging url & performs login...*/
+		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
 		
 		/*count number of unassigned jobs is stored before creation of job*/
