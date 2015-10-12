@@ -16,6 +16,7 @@ public class CandidatePoolsByApplication extends CandidateRegressionSuiteBase{
     getObject("candLinkX").click();
     getObject("candidatePoolsX").click();
     getObject("candidateFirstPoolNameMessageIconX").click();
+    
     //Advertise Job Step 1 Select Job
     waitForElementClickableId(10, "advertiseJobEnterJobId");
     getObjectById("advertiseJobEnterJobId").sendKeys("watsonOld");
