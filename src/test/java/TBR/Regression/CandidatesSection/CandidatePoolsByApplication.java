@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.Test;
 
 public class CandidatePoolsByApplication extends CandidateRegressionSuiteBase{
-	
+	//Candidate Pools By Application
 	@Test
 	public void candidatesPoolByApplication() throws IOException, InterruptedException{
     openBrowser();
