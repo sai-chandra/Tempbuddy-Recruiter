@@ -40,9 +40,4 @@
         <class name="TBR.Regression_Testcases.JobsFlowAdvertisePoolByAssignment" ></class>  
     </classes>
 </test>
-<test name="for Check-Branding">
-    <classes>
-        <class name="TBR.Regression_Testcases.CheckBranding"></class>  
-    </classes>
-</test>
 </suite>
