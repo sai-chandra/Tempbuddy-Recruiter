@@ -21,7 +21,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	@Test(dataProvider="getJobsAssignCandidateData")
 	public void jobsFlowAssignCandidate(Hashtable<String, String>data) throws InterruptedException{
 		openBrowser();
-		driver.get(CONFIG.getProperty("testSiteName2"));
+		driver.get(CONFIG.getProperty("testSiteName"));
 		login_Valid();
 		/*count number of unassigned jobs is stored before creation of job*/
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
@@ -249,7 +249,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		       String contentEmail;
 		try {
 		System.out.println("try");
-		contentEmail = email.receiveAndDeleteMultiPart("jack.tempbuddy@gmail.com", "exercise", "New Assignment from Staging agency via SkillCorps");
+		contentEmail = email.receiveAndDeleteMultiPart("jack.tempbuddy@gmail.com", "exercise", "New Assignment from Staging agency via TempBuddy");
 		System.out.println(contentEmail);
 		HTMLParser html = new HTMLParser();
 		System.out.println("parser");
@@ -259,7 +259,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		System.out.println(decideAssignmentURL);
 		String AssignmentRejected = getObjectCssText("CandidateRejectCss");
 	    System.out.println(AssignmentRejected);
-	    Assert.assertEquals(AssignmentRejected, "Assignment Rejected. SkillCorps will notify Staging agency");
+	    Assert.assertEquals(AssignmentRejected, "Assignment Rejected. TempBuddy will notify Staging agency");
 	    System.out.println("Reject messages matched");
 		} catch (Exception e) {
 		System.out.println("catch");

@@ -19,7 +19,7 @@ public class JobsFlowAdvertisePoolByApplication extends RegressionSuiteBase{
 	}
 	
 	@Test(dataProvider="jobFlowAdvertisePooldata")
-	public void jobFlowByPoolRough(Hashtable<String, String> data) throws InterruptedException, IOException{
+	public void jobFlowByPoolByApplication(Hashtable<String, String> data) throws InterruptedException, IOException{
 	openBrowser();
 	driver.get(CONFIG.getProperty("testSiteName"));
 	login_Valid();

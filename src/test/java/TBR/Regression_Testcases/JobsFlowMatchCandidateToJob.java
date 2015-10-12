@@ -18,7 +18,7 @@ public class JobsFlowMatchCandidateToJob extends RegressionSuiteBase {
 	}
 	
 	@Test(dataProvider="getJobsAssignCandidateData1")
-	public void jobsFlowAssignJobRough(Hashtable<String, String> data) throws InterruptedException{
+	public void jobsFlowMatchCanidateToJob(Hashtable<String, String> data) throws InterruptedException{
 		openBrowser();
 		driver.get(CONFIG.getProperty("testSiteName"));
 		login_Valid();
