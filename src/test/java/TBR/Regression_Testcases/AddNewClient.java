@@ -31,7 +31,7 @@ public class AddNewClient extends RegressionSuiteBase{
 		getObject("addNewClientX").click();
 		
 		/*on Step 1 Basic information*/
-		waitForElementId(10, "nameClientId");
+		waitForElementId(15, "nameClientId");
 		getObjectById("nameClientId").sendKeys(data.get("Name"));
 		String clientName = getObjectById("nameClientId").getAttribute("value");
 		System.out.println("the name of the client is" +clientName);
@@ -61,6 +61,7 @@ public class AddNewClient extends RegressionSuiteBase{
 		/*moves on to Create New Client Step 3: Additional Locations*/
 		System.out.println("success on Step 3 Additional Location");
 	    getObject("addLocS3X").click();
+	    waitForElementId(10, "clientCreatLocationLabelId");
         getObjectById("clientCreatLocationLabelId").sendKeys(data.get("AddLocationLabel"));
         getObjectById("clientCreateAddressId").sendKeys(data.get("AddClientAddress"));
         getObjectById("clientCreatePhonesId").sendKeys(data.get("AddClientsPhones"));
