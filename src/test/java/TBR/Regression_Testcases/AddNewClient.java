@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
-/*for adding a New Client*/
+/*for adding a New Clients*/
 public class AddNewClient extends RegressionSuiteBase{
 	@DataProvider
 	public Object[][] getAddNewClientData(){
