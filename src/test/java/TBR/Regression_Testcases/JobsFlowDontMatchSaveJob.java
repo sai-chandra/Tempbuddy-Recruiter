@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import TBR.TestUtil.TestUtil;
 
 public class JobsFlowDontMatchSaveJob extends RegressionSuiteBase {
-
+         //jobs flow don't match save
 	    @DataProvider
 		public Object[][] getDontMatchSaveJobData(){
 	    return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowDontMatchSave");
@@ -183,7 +183,7 @@ public class JobsFlowDontMatchSaveJob extends RegressionSuiteBase {
 			System.out.println("here");
 			getObject("allJobsX").click();
 			//WebWaitId("allJobsCountValueId");
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 			System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 			
