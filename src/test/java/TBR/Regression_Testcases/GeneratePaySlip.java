@@ -28,7 +28,7 @@ public class GeneratePaySlip extends RegressionSuiteBase {
 	    Thread.sleep(3000);
 	    getObjectById("payslipInvoiceDateEndingId").click();
 	    Select monthForPayslip = new Select(getObject("monthDatePickerX"));
-	    monthForPayslip.selectByVisibleText("Sep");
+	    monthForPayslip.selectByVisibleText("Dec");
 	    Select yearForPayslip = new Select(getObject("yearDatePickerX"));
 	    yearForPayslip.selectByValue("2015");
 	    Thread.sleep(4000);

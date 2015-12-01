@@ -258,6 +258,14 @@ public class TestBase {
 					getObjectById(idKey).clear();
 					getObjectById(idKey).sendKeys(value);
 				}
+				
+				 //recruiter login with valid credentials
+			    public void login_Kevin(){
+			   // driver.get(CONFIG.getProperty("testSiteName"));
+			    getObjectById("usernameId").sendKeys("kevintest");
+			    getObjectById("passwordId").sendKeys("kevintest1");
+			    getObjectById("logInId").click();
+			    }
 					
 		    //recruiter login with valid credentials
 			    public void login_Valid(){
@@ -316,7 +324,7 @@ public class TestBase {
 				  build.release(point2).perform();
 				  return null;
 			  }
-			  
+			
 			//webdriver wait by xpath  
 			  public void waitForElement(long waitTime, String elementXpath) {
 					new WebDriverWait(driver, waitTime)
@@ -617,4 +625,15 @@ public class TestBase {
 				public void goToUrl(String url){
 					driver.navigate().to(url);
 					}
+				
+				/*Match Candidate: looks for "ALL POSITIONS ARE NOW FILLED" success message and assertsEquals*/
+				public void matchCandidateSuccessMessage(){
+					 waitForElement(25, "matchCandidateSuccessMessageX");
+					 String successMessage = getObjectText("matchCandidateSuccessMessageX");
+					 LOGS.debug(successMessage);
+					 System.out.println(successMessage);
+					 Assert.assertEquals(successMessage, "ALL POSITIONS ARE NOW FILLED");
+					 LOGS.debug("a candidate has been matched successfully");		
+				}
+
 			}

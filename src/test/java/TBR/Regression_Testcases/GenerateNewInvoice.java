@@ -19,10 +19,10 @@ public class GenerateNewInvoice extends RegressionSuiteBase {
 	    getObjectByLinkText("watsonsClientLt").click();
 	    getObjectById("invoiceDateEndingId").click();
 	    Select monthInvoice = new Select(getObject("monthDatePickerX"));
-	    monthInvoice.selectByVisibleText("Sep");
+	    monthInvoice.selectByVisibleText("Dec");
 	    Select yearInvoice = new Select(getObject("yearDatePickerX"));
 	    yearInvoice.selectByValue("2015");
-	    getObject("timesheetSep2X").click();
+	    getObject("dec31X").click();
 	    getObject("invoiceGenerateX").click();
 	    getObject("invoiceAllInvoicesX").click();
 	    getObject("invoiceFilterX").click();
