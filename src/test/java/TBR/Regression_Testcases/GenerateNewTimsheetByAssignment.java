@@ -31,10 +31,10 @@ public class GenerateNewTimsheetByAssignment extends RegressionSuiteBase {
 		getObjectById("timesheetChooseDateRangeId").click();
 		Thread.sleep(3000);
 		Select monthByAssignment = new Select(getObject("candidatePassportMonthX"));
-		monthByAssignment.selectByVisibleText("Sep");
+		monthByAssignment.selectByVisibleText("Nov");
 	    Select yearByAssignment = new Select(getObject("candidatePassportYearX"));
 	    yearByAssignment.selectByValue("2015");
-	    getObject("timesheetSep2X").click();
+	    getObject("timesheetNov28X").click();
 	    getObject("timesheetDateRangeFinishX").click();
 	    Thread.sleep(6000);
 	    

@@ -44,7 +44,7 @@ public class JobsFlowAdvertisePoolByApplication extends RegressionSuiteBase{
     getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
     getObjectById("biReqAvailbilityId").click();
     Select month = new Select(getObject("biMonthX"));
-    month.selectByVisibleText("Oct");
+    month.selectByVisibleText("Dec");
     Select year = new Select(getObject("biYearX"));
     year.selectByValue("2015");
     getObject("biDateX").click();

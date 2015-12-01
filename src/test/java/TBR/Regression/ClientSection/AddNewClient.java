@@ -72,7 +72,7 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 	    getObject("clientSearchFieldX").click();
 	    getObject("clientSearchFieldX").sendKeys(clientName);
 	    
-	    Thread.sleep(5000);
+	    Thread.sleep(8000);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
 	    System.out.println("the client appeared on the screen is" +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);

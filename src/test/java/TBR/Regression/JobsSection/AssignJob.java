@@ -16,6 +16,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getAssignJobData(){
+    //return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignParameters");
     return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignCandidate");
 	}
     
@@ -33,7 +34,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -116,7 +117,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 		}
 		System.out.println("Finish");
 		
-		/*//Reading email from Client
+		//Reading email from Client
 	    System.out.println("Reading email");
 	    Email emailClient = new Email();
 	    String contentEmailClient;
@@ -139,7 +140,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	    }
-	    System.out.println("Finish");*/
+	    System.out.println("Finish");
 	    }
 	
 	    

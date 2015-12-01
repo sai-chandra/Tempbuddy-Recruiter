@@ -17,7 +17,7 @@ public class CreateNewCandidate extends RegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getCreateNewCandidateData(){
-	return TestUtil.getDataIntoHashTable(CandidateExcel, "AddNewCandidates");
+	return TestUtil.getDataIntoHashTable(CandidateExcel, "AddNewCandidate");
 	}
 	
 	@Test(dataProvider="getCreateNewCandidateData")
@@ -25,6 +25,7 @@ public class CreateNewCandidate extends RegressionSuiteBase{
 	openBrowser();
 	driver.get(CONFIG.getProperty("testSiteName"));
 	login_Valid();
+	//login_Kevin();
 	getObject("candLinkX").click();
 	getObject("addNewCandidateX").click();
 	waitForElementClickableId(10, "candidateNameId");
@@ -92,6 +93,14 @@ public class CreateNewCandidate extends RegressionSuiteBase{
     getObject("candidateCategoryX").click();
     getObject("candidateCategoryX").sendKeys(data.get("Category"));
     getObject("candidateCategoryX").sendKeys(Keys.RETURN);
+    //Thread.sleep(3000);
+    /*the below two lines are for live server*/
+    //getObjectById("candidateLicenseId").click();
+    //getObjectById("candidateLicenseId").sendKeys(data.get("driverlicense"));
+    //getObjectById("candidateLicenseId").sendKeys(Keys.RETURN);
+    /*end of live server code*/
+    getObject("candidateCustomAttributeShowX").click();
+    explicitWaitId("candidatePassportId");
     getObjectById("candidatePassportId").click();
     Select month = new Select(getObject("candidatePassportMonthX"));
     month.selectByVisibleText("Oct");
@@ -121,7 +130,7 @@ public class CreateNewCandidate extends RegressionSuiteBase{
     //getObject("candLinkX").click();
     //explicitWaitXpath("allCandidatesX");
     getObject("allCandidatesX").click();
-    /*moves on to candidate list wizard*/
+    //moves on to candidate list wizard
     //explicitWaitXpath("searchCandidateX");
     getObject("searchCandidateX").click();
     //explicitWaitXpath("searchCandidateX");

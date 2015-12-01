@@ -28,7 +28,7 @@ public class AddSelectNewTemplate extends JobsRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -57,14 +57,14 @@ public class AddSelectNewTemplate extends JobsRegressionSuiteBase{
 	    getObjectById("templateNewTemplateBasicInfoPayRateId").sendKeys(data.get("NewPayRate"));
 	    String templatePayRate = getObjectById("templateNewTemplateBasicInfoPayRateId").getAttribute("value");;
 	    LOGS.debug(templatePayRate);
-	    System.out.println(templatePayRate);
+	    System.out.println("template pay rate is "+templatePayRate);
 	    getObject("templatePayRateLockX").click();
 	    getObjectById("templateNewTemplateBasicInfoBillRateId").click();
 	    getObjectById("templateNewTemplateBasicInfoBillRateId").clear();
 	    getObjectById("templateNewTemplateBasicInfoBillRateId").sendKeys(data.get("NewBillRate"));
-	    String NewTemplateBillRate = getObjectById("payRateId").getAttribute("value");
+	    String NewTemplateBillRate = getObjectById("templateNewTemplateBasicInfoBillRateId").getAttribute("value");
 	    LOGS.debug(NewTemplateBillRate);
-	    System.out.println(NewTemplateBillRate);
+	    System.out.println("new template bill rate is" +NewTemplateBillRate);
 	    getObject("templateBillRateLockX").click();
 	    //getObjectById("templateCostId").sendKeys(data.get("NewTemplateCost"));
 	    //getObjectById("templateCostArrowUpdaterId").click();
@@ -88,9 +88,9 @@ public class AddSelectNewTemplate extends JobsRegressionSuiteBase{
 	    
 	    getObjectById("billingTypeId").sendKeys(data.get("BillingTypeStep3"));
 	   
-	    //getObjectById("payRateId").clear();
-	    //getObjectById("payRateId").sendKeys(data.get("PayRateStep3"));
-	    //getObjectById("payRateLockId").click();
+	    getObjectById("payRateId").clear();
+	    getObjectById("payRateId").sendKeys(data.get("PayRateStep3"));
+	    getObjectById("payRateLockId").click();
 	    System.out.println("total id after the pay rate is entered and locked, auto generated value is = "+getObjectById("totalId").getAttribute("value"));
 	    String BillRate = getObjectTextId("billRateLockId");
 	    //getObjectById("billRateId").clear();

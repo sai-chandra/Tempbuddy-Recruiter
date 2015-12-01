@@ -28,11 +28,11 @@ public class ExportPayslip extends RegressionSuiteBase{
 	//For payslip Export Date Ending
 	getObjectById("exportDateEndingPayslipId").click();
 	Select monthForExportCandidatesEnd = new Select(getObject("exportMonthDatePickerPayslipX"));
-	monthForExportCandidatesEnd.selectByVisibleText("Aug");
+	monthForExportCandidatesEnd.selectByVisibleText("Dec");
 	Select yearForExportTimesheetend = new Select(getObject("exportYearDatePickerPayslipX"));
 	yearForExportTimesheetend.selectByValue("2015");
 
-	getObject("exportDateEndingAug22X").click();
+	getObject("dec31X").click();
 	getObjectById("exportPayslipCandidateNameId").sendKeys("Sherlock");
 	getObjectByLinkText("sherlockCandidateLt").click();
 	

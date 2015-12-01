@@ -26,6 +26,7 @@ public class AddNewClient extends RegressionSuiteBase{
 	public void addNewClient(Hashtable<String, String>data) throws InterruptedException{
 		openBrowser();
 		driver.get(CONFIG.getProperty("testSiteName"));
+		//login_Kevin();
 		login_Valid();
 		getObject("clientsLinkx").click();
 		getObject("addNewClientX").click();
@@ -67,7 +68,7 @@ public class AddNewClient extends RegressionSuiteBase{
         getObjectById("clientCreatePhonesId").sendKeys(data.get("AddClientsPhones"));
         getObject("clientCreateAddX").click();
         getObjectByCss("finishS3Css").click();
-	    Thread.sleep(5000);
+	    Thread.sleep(8000);
 	    driver.navigate().refresh();
 	    /*moves on to dash board*/
 	    
@@ -81,7 +82,7 @@ public class AddNewClient extends RegressionSuiteBase{
 	    getObject("clientSearchFieldX").click();
 	    getObject("clientSearchFieldX").sendKeys(clientName);
 	    
-	    Thread.sleep(5000);
+	    Thread.sleep(8000);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
 	    System.out.println("the client appeared on the screen is " +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);

@@ -36,16 +36,16 @@ public class GenerateTimesheetByAssignmentClient extends RegressionSuiteBase{
 		Thread.sleep(3000);
 		getObjectById("timesheetAssignmentTitleId").sendKeys(data.get("AssignmentTitle"));
 		
-		getObjectByLinkText("qwertyJobLt").click();
+		getObjectByLinkText("lockJobLt").click();
 		getObject("timesheetByAssignmentNextX").click();
 		//moves on to step 2-choose by date
 		getObjectById("timesheetChooseDateRangeId").click();
 		Thread.sleep(3000);
 		Select monthByAssignment = new Select(getObject("candidatePassportMonthX"));
-		monthByAssignment.selectByVisibleText("Sep");
+		monthByAssignment.selectByVisibleText("Nov");
 	    Select yearByAssignment = new Select(getObject("candidatePassportYearX"));
 	    yearByAssignment.selectByValue("2015");
-	    getObject("timesheetSep2X").click();
+	    getObject("timesheetNov27X").click();
 	    getObject("timesheetDateRangeFinishX").click();
 	    Thread.sleep(6000);
 	    

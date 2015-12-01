@@ -29,11 +29,11 @@ public class ExportTimesheets extends RegressionSuiteBase{
 		getObject("exportDateStartingSep3X").click();
 		
 		//For Timesheets Export Date Ending
-		getObjectById("exportDateEndingId").click();
+		/*getObjectById("exportDateEndingId").click();
 		Select monthForExportTimesheetend = new Select(getObject("exportDateEndingMonthX"));
 		monthForExportTimesheetend.selectByVisibleText("Sep");
 		Select yearForExportTimesheetend = new Select(getObject("exportDateEndingYearX"));
-		yearForExportTimesheetend.selectByValue("2015");
+		yearForExportTimesheetend.selectByValue("2015");*/
 		getObjectById("exportCandidateNameId").sendKeys("tempBuddy");
 		getObjectByLinkText("candidateName1Step6Lt").click();
 		getObjectByCss("exportExportTimesheetCss").click();

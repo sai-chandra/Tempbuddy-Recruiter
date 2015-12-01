@@ -51,10 +51,10 @@ public class JobsRegressionSuiteBase extends TestBase{
 	    getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
 	    getObjectById("biReqAvailbilityId").click();
 	    Select month = new Select(getObject("biMonthX"));
-	    month.selectByVisibleText("Oct");
+	    month.selectByVisibleText("Dec");
 	    Select year = new Select(getObject("biYearX"));
-	    year.selectByValue("2015");
-	    getObject("biDateX").click();
+	    year.selectByValue("2015"); 
+	    getObject("biDateMatchCandidateX").click();
 	    Select weekPattern = new Select(getObject("biNumWeekPattern"));
 	    weekPattern.selectByValue("1");
 	    dragDrop("biTime9X", "bitime5X");
@@ -191,10 +191,10 @@ public class JobsRegressionSuiteBase extends TestBase{
 	     getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
 		 getObjectById("biReqAvailbilityId").click();
 		 Select month = new Select(getObject("biMonthX"));
-		 month.selectByVisibleText("Oct");
+		 month.selectByVisibleText("Dec");
 		 Select year = new Select(getObject("biYearX"));
 		 year.selectByValue("2015");
-		 getObject("biDateX").click();
+		 getObject("AddNewTemplatedec31X").click();
 		 Select weekPattern = new Select(getObject("biNumWeekPattern"));
 		 weekPattern.selectByValue("1");
 		 dragDrop("biTime9X", "bitime5X");

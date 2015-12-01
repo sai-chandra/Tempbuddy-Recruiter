@@ -16,6 +16,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getJobsAssignCandidateData(){
+		//return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignParameters");
 		return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignCandidate");
 	}
 	@Test(dataProvider="getJobsAssignCandidateData")
@@ -23,15 +24,15 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		openBrowser();
 		driver.get(CONFIG.getProperty("testSiteName"));
 		login_Valid();
-		/*count number of unassigned jobs is stored before creation of job*/
+		//count number of unassigned jobs is stored before creation of job
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
 		System.out.println("unassignedjobs number before saving a job is "+countUnassignJobsNumBefore);
 		
-		/*for storing the count of total jobs in a string before the job is created*/
+		//for storing the count of total jobs in a string before the job is created
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		//WebWaitId("allJobsCountValueId");
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		//goes back to the home page dashboard page
@@ -61,14 +62,14 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    getObjectById("biReqAvailbilityId").click();
 	    getObject("biMonthX").click();
 	    Select month = new Select(getObject("biMonthX"));
-	    month.selectByVisibleText("Oct");
+	    month.selectByVisibleText("Dec");
 	    Select year = new Select(getObject("biYearX"));
 	    year.selectByValue("2015");
 	    Thread.sleep(3000);
 	   // driver.findElement(By.linkText("19")).click();
 	   /* Select date = new Select(getObject("datePickerBoxX"));
 	   date.selectByVisibleText("25");*/
-	   // getObject("biDateX").click();
+	    getObject("AddNewTemplatedec31X").click();
 	   
 	    Select weekPattern = new Select(getObject("biNumWeekPattern"));
 	    weekPattern.selectByValue("1");
@@ -196,10 +197,10 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    //getObject("finishX").click();
 	    /*on confirm wizard: do you want to assign the selected job to this candidate*/
 	    
-	    /*explicitWaitXpath("assignAutoConfirmClientYesX");
+	    //explicitWaitXpath("assignAutoConfirmClientYesX");
 	    getObject("assignAutoConfirmClientYesX").click();
-	    getObject("assignSendEmailClientYesX").click();
-	    getObject("assignAutoConfirmCandidateYesX").click();*/
+	    //getObject("assignSendEmailClientYesX").click();
+	    //getObject("assignAutoConfirmCandidateYesX").click();
 	    //getObject("assignAutoConfirmCandidateNoX").click();
 	    //getObject("assignCandidateYesX").click();
 	    getObjectByCss("assignCandidateYesCss").click();
@@ -244,6 +245,18 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
 	    
+		//click on dash board
+	    getObject("dashBoardLinkX").click();
+	    Thread.sleep(5000);
+	    
+	    //gets the unassigned jobs number from the dash board
+		String countUnassignJobsNumAfterAssigned = getObjectById("unassignedJobsCountId").getText();
+		System.out.println("unassigned job number after saving a job and Assigning to a candidate is "+countUnassignJobsNumAfterAssigned);
+		
+		//verifies whether the unassigned jobs number is equal to the unassigned jobs number after assigning Job to a candidate
+		Assert.assertEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfterAssigned);
+		System.out.println("if the before and after conditions are equal then the job is successfully saved and Assigned");
+		
 		 System.out.println("Reading email");
 		 Email email = new Email();
 		       String contentEmail;
@@ -292,7 +305,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	    }
-	    System.out.println("Finish");
+	    System.out.println("Finish"); 
 	}
 	}
 	

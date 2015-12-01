@@ -24,8 +24,8 @@ public class JobsFlowMatchCandidateToJob extends RegressionSuiteBase {
 		login_Valid();
 		
 		/*count number of unassigned jobs is stored before creation of job*/
-		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
-		System.out.println("unassignedjobs number before saving a job is "+countUnassignJobsNumBefore);
+		String countUnassignJobsNumBeforeAssign = getObjectById("unassignedJobsCountId").getText();
+		System.out.println("unassignedjobs number before saving a job is "+countUnassignJobsNumBeforeAssign);
 		
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
@@ -58,10 +58,10 @@ public class JobsFlowMatchCandidateToJob extends RegressionSuiteBase {
 	    getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
 	    getObjectById("biReqAvailbilityId").click();
 	    Select month = new Select(getObject("biMonthX"));
-	    month.selectByVisibleText("Oct");
+	    month.selectByVisibleText("Dec");
 	    Select year = new Select(getObject("biYearX"));
 	    year.selectByValue("2015");
-	    getObject("biDateX").click();
+	    getObject("biDateMatchCandidateX").click();
 	    Select weekPattern = new Select(getObject("biNumWeekPattern"));
 	    weekPattern.selectByValue("1");
 	    dragDrop("biTime9X", "bitime5X");
@@ -210,18 +210,21 @@ public class JobsFlowMatchCandidateToJob extends RegressionSuiteBase {
 	    getObject("matchCandidateYesX").click();
 	    Thread.sleep(4000);
 	    getObjectByCss("matchCandidateSendMessageCss").click();
+	    //Thread.sleep(4000);
+	    
+	    matchCandidateSuccessMessage();
 	    
 	  //click on dash board
 	    getObject("dashBoardLinkX").click();
 	    Thread.sleep(5000);
-	    String countUnassignJobsNumAfter = getObjectById("unassignedJobsCountId").getText();
-		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
+	    String countUnassignJobsNumAfterAssign = getObjectById("unassignedJobsCountId").getText();
+		System.out.println("unassigned job number after assigning a job is "+countUnassignJobsNumAfterAssign);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		//checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
 		
-		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
+		Assert.assertEquals(countUnassignJobsNumBeforeAssign, countUnassignJobsNumAfterAssign);
+		System.out.println("if the before and after conditions are equal then the job is successfully saved and assigned");
 	    
 		getObject("jobsLinkX").click();
 	    getObject("allJobsX").click();

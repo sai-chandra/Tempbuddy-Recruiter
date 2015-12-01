@@ -15,7 +15,7 @@ import TBR.TestUtil.TestUtil;
 public class AddNewCandidate extends CandidateRegressionSuiteBase{
 	@DataProvider
 	public Object[][] getCreateNewCandidateData(){
-	return TestUtil.getDataIntoHashTable(CandidateExcel, "AddNewCandidates");
+	return TestUtil.getDataIntoHashTable(CandidateExcel, "AddNewCandidate");
 	}
 	
 	@Test(dataProvider="getCreateNewCandidateData")
@@ -90,6 +90,8 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     getObject("candidateCategoryX").click();
     getObject("candidateCategoryX").sendKeys(data.get("Category"));
     getObject("candidateCategoryX").sendKeys(Keys.RETURN);
+    getObject("candidateCustomAttributeShowX").click();
+   // explicitWaitXpath("candidatePassportId");
     getObjectById("candidatePassportId").click();
     Select month = new Select(getObject("candidatePassportMonthX"));
     month.selectByVisibleText("Oct");

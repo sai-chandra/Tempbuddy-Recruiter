@@ -19,22 +19,26 @@ public class ExportCandidatesRough extends TestBase{
 		getObject("candLinkX").click();
 		getObject("exportCandidatesX").click();
 		
-		//for Export candidates Date Starting
+		/*//for Export candidates Date Starting
 		getObjectById("exportExportDateStartingCandidatesId").click();
 		Select monthForExportCandidatesStart = new Select(getObject("exportMonthDatePickerCandidatesX"));
 		monthForExportCandidatesStart.selectByVisibleText("Sep");
 		Select yearForExportTimesheetstart = new Select(getObject("exportYearDatePickerCandidatesX"));
 		yearForExportTimesheetstart.selectByValue("2015");
-		getObject("exportDateStartingSep3X").click();
+		getObject("dateDatePickerSep3X").click();
 		
 		//For Export candidates Date Ending
 		getObjectById("exportDateEndingCandidatesId").click();
 		Select monthForExportCandidatesEnd = new Select(getObject("exportMonthDatePickerCandidatesX"));
-		monthForExportCandidatesEnd.selectByVisibleText("Sep");
+		monthForExportCandidatesEnd.selectByVisibleText("Nov");
 		Select yearForExportTimesheetend = new Select(getObject("exportYearDatePickerCandidatesX"));
 		yearForExportTimesheetend.selectByValue("2015");
-		getObject("exportDateStartingSep3X").click();
-		getObjectByCss("exportExportCss").click();
+		getObject("exportDateStartingNov28X").click();
+		//Thread.sleep(2000);
+*/		getObject("exportExportX").click();
+
+Thread.sleep(3000);
+driver.switchTo().alert().accept();
 
 }
 }

@@ -98,7 +98,7 @@ public class CloneJob extends RegressionSuiteBase{
         
 		waitForElementClickable(10, "allJobsFilterX");
 		getObject("allJobsFilterX").sendKeys(data.get("JobsFilter"));
-		Thread.sleep(7000);
+		Thread.sleep(8000);
 		String newJobTitle = (data.get("JobsFilter"));
 		System.out.println(newJobTitle);
 		Thread.sleep(4000);
