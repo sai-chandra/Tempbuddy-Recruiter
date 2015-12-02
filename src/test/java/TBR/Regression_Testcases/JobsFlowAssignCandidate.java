@@ -32,7 +32,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		//WebWaitId("allJobsCountValueId");
-		Thread.sleep(7000);
+		Thread.sleep(9000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		//goes back to the home page dashboard page
@@ -198,7 +198,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 	    /*on confirm wizard: do you want to assign the selected job to this candidate*/
 	    
 	    //explicitWaitXpath("assignAutoConfirmClientYesX");
-	    getObject("assignAutoConfirmClientYesX").click();
+	    //getObject("assignAutoConfirmClientYesX").click();
 	    //getObject("assignSendEmailClientYesX").click();
 	    //getObject("assignAutoConfirmCandidateYesX").click();
 	    //getObject("assignAutoConfirmCandidateNoX").click();
@@ -238,7 +238,7 @@ public class JobsFlowAssignCandidate extends RegressionSuiteBase{
 		System.out.println("here");
 		getObject("allJobsX").click();
 		//WebWaitId("allJobsCountValueId");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		

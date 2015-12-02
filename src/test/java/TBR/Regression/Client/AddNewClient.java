@@ -1,4 +1,4 @@
-package TBR.Regression.ClientSection;
+package TBR.Regression.Client;
 
 import java.util.Hashtable;
 

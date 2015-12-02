@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.util.Hashtable;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
-public class DontMatchSaveJob extends JobsRegressionSuiteBase{
+public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 
 	@DataProvider
 	public Object[][] getSaveJobData(){

@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeSuite;
 
 import TBR.TestBase.TestBase;
 
-public class JobsRegressionSuiteBase extends TestBase{
+public class FullTestingRegressionSuiteBase extends TestBase{
 	
 	public String HoursFixed = null;
 	public String jobTitle = null;
@@ -24,7 +24,7 @@ public class JobsRegressionSuiteBase extends TestBase{
 	@AfterSuite
 	public void tearDown() throws InterruptedException{
 	//Thread.sleep(6000);
-	//driver.close();
+	//driver.quit();
 	}
 	
 	/*Add New Job-Step1: Client Information*/

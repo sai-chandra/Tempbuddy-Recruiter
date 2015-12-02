@@ -1,4 +1,4 @@
-package TBR.Regression.ClientSection;
+package TBR.Regression.Client;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class ClientRegressionSuiteBase extends TestBase{
 	@AfterSuite
 	public void tearDown() throws InterruptedException{
 	//Thread.sleep(6000);
-	//driver.close();
+	driver.quit();
 	}
 
 }

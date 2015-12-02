@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.util.Hashtable;
 
@@ -12,7 +12,7 @@ import TBR.TestUtil.Email;
 import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
 
-public class AssignJob extends JobsRegressionSuiteBase{
+public class AssignJob extends FullTestingRegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getAssignJobData(){
@@ -93,7 +93,19 @@ public class AssignJob extends JobsRegressionSuiteBase{
 		LOGS.debug("Success! if the before and after conditions are not same then all jobs increment is working");
 		System.out.println("if the before and after conditions are not same then all jobs increment is working");
 		
-		 System.out.println("Reading email");
+		//click on dash board
+	    getObject("dashBoardLinkX").click();
+	    Thread.sleep(5000);
+	    
+		//gets the unassigned jobs number from the dash board
+		String countUnassignJobsNumAfterAssigned = getObjectById("unassignedJobsCountId").getText();
+	    System.out.println("unassigned job number after saving a job and Assigning to a candidate is "+countUnassignJobsNumAfterAssigned);
+		
+	    //verifies whether the unassigned jobs number is equal to the unassigned jobs number after assigning Job to a candidate
+		Assert.assertEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfterAssigned);
+		System.out.println("if the before and after conditions are equal then the job is successfully saved and Assigned");
+		 
+		System.out.println("Reading email");
 		 Email email = new Email();
 		       String contentEmail;
 		try {
@@ -133,7 +145,7 @@ public class AssignJob extends JobsRegressionSuiteBase{
 	    System.out.println(decideAssignmentURL1);
 	    String LinkExpired = getObjectCssText("ClientlinkExpiredCss");
 	    System.out.println(LinkExpired);
-	    Assert.assertEquals(LinkExpired, "This assignment is being reassigned by the agency. Please wait for the next approval email.");
+	    Assert.assertEquals(LinkExpired, "The link has expired");
 	    System.out.println("Link expired message matched");
 	    } catch (Exception e) {
 	    System.out.println("catch");

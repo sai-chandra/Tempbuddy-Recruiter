@@ -14,6 +14,8 @@ import javax.mail.search.FlagTerm;
 import javax.mail.search.SearchTerm;
 import javax.mail.search.SubjectTerm;
 
+import com.sun.mail.util.MailSSLSocketFactory;
+
 public class Email {
 
 	private static int timeToWait = 10; //10 seconds per each iteration
@@ -30,10 +32,16 @@ public class Email {
 	 */
 	
 		public String receiveAndDeleteMultiPart(String email, String pass, String subject) throws Exception {
-			Properties props = System.getProperties();
-			props.setProperty("mail.store.protocol", "imaps");
+			//Properties props = System.getProperties();
+			Properties props = new Properties();
+			props.put("mail.store.protocol", "imaps");
+			//the four lines are for trusting the imaps ssl certificate
+			MailSSLSocketFactory socketFactory= new MailSSLSocketFactory();
+			socketFactory.setTrustAllHosts(true);
+			props.put("mail.imaps.ssl.socketFactory", socketFactory);
+			props.put("mail.pop3s.ssl.socketFactory", socketFactory);
 			try{
-				Session session = Session.getDefaultInstance(props, null);
+				Session session = Session.getDefaultInstance(props);
 				Store store = session.getStore("imaps");
                 store.connect("imap.gmail.com", email, pass);
                 
@@ -91,6 +99,7 @@ public class Email {
                 		BodyPart bp = mp.getBodyPart(0);
                 		content = bp.getContent().toString();
                 	}
+                	mailFromGod.setFlag(Flags.Flag.DELETED, true);
                 	return content;
                 }
                 	}catch (Exception e){
@@ -101,10 +110,15 @@ public class Email {
 			
 			public String receiveAndDelete(String email, String pass, String subject)
 					throws Exception {
-				Properties props = System.getProperties();
-				props.setProperty("mail.store.protocol", "imaps");
+				//Properties props = System.getProperties();
+				Properties props = new Properties();
+				props.put("mail.store.protocol", "imaps");
+				MailSSLSocketFactory socketFactory= new MailSSLSocketFactory();
+				socketFactory.setTrustAllHosts(true);
+				props.put("mail.imaps.ssl.socketFactory", socketFactory);
+				props.put("mail.pop3s.ssl.socketFactory", socketFactory);
 				try {
-					Session session = Session.getDefaultInstance(props, null);
+					Session session = Session.getDefaultInstance(props);
 					Store store = session.getStore("imaps");
 					store.connect("imap.gmail.com", email, pass);
 

@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.util.Hashtable;
 
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
 
-public class MatchCandidate extends JobsRegressionSuiteBase{
+public class MatchCandidate extends FullTestingRegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getMatchCandidateJobData(){

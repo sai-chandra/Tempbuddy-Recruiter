@@ -549,9 +549,9 @@ public class TestBase {
 				
 					Integer n = Integer.valueOf(unassignedJobsNumberBefore);
 					Integer add = n+1;//countUnassignJobsNumBefore+1;
-					System.out.println("the int value of unassignedJobNumberBefore added with 1 is = "+add);
+					//System.out.println("the int value of unassignedJobNumberBefore added with 1 is = "+add);
 					String after = String.valueOf(add);
-					System.out.println("converting Int to String, value of unassignedJobNumberBefore added with 1 is = "+add);
+					//System.out.println("converting Int to String, value of unassignedJobNumberBefore added with 1 is = "+add);
 					System.out.println(after);
 					/*if(!after.equals(unassignedJobNumbeforeAdd1)){
 					ErrorUtil.addVerificationFailure(null);

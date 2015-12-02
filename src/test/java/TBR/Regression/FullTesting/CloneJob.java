@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.util.Hashtable;
 
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
 
-public class CloneJob extends JobsRegressionSuiteBase{
+public class CloneJob extends FullTestingRegressionSuiteBase{
 	
  @DataProvider
  public Object[][] getCloneJobData(){
@@ -30,7 +30,7 @@ public class CloneJob extends JobsRegressionSuiteBase{
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		//goes back to the home page dashboard page
@@ -54,6 +54,8 @@ public class CloneJob extends JobsRegressionSuiteBase{
 	    waitForElementClickableId(10, "cloneNewJobTitleId");
 	    getObjectById("cloneNewJobTitleId").click();
 	    getObjectById("cloneNewJobTitleId").clear();
+	    getObjectById("cloneNewJobTitleId").clear();
+	    Thread.sleep(3000);
 	    getObjectById("cloneNewJobTitleId").sendKeys(data.get("NewJobTitle"));
 	    getObjectById("cloneStartDayId").click();
 	    Thread.sleep(4000);
@@ -88,7 +90,7 @@ public class CloneJob extends JobsRegressionSuiteBase{
 		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
 		
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		
 		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);

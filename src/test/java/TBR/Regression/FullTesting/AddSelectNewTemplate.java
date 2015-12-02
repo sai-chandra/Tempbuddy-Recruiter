@@ -1,4 +1,4 @@
-package TBR.Regression.JobsSection;
+package TBR.Regression.FullTesting;
 
 import java.util.Hashtable;
 
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import TBR.TestUtil.TestUtil;
 /*Adding new Template*/
-public class AddSelectNewTemplate extends JobsRegressionSuiteBase{
+public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getAddSelectNewTemplateData(){

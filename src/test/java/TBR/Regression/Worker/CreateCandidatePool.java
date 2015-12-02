@@ -1,4 +1,4 @@
-package TBR.Regression.CandidatesSection;
+package TBR.Regression.Worker;
 //Candidate pool
 public class CreateCandidatePool {
 

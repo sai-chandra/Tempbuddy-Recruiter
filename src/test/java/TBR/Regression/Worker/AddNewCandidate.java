@@ -1,4 +1,4 @@
-package TBR.Regression.CandidatesSection;
+package TBR.Regression.Worker;
 
 import java.util.Hashtable;
 
@@ -129,7 +129,7 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     
    
 	//explicitWaitXpath("candidateMatchX");
-    Thread.sleep(5000);
+    Thread.sleep(8000);
     String candidateNameAppeared = getObject("candidateMatchX").getText();
     System.out.println("candidate appeared on the screen is = "+candidateNameAppeared);
     Assert.assertEquals(candidateNameAppeared, candidateName);
