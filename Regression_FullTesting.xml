@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression.FullTesting">
+<test name="for Dont-Match-Save-Job">
+    <classes>
+        <class name="TBR.Regression.FullTesting.DontMatchSaveJob" ></class>  
+    </classes>
+</test>
+<test name="for Clone-Job">
+    <classes>
+        <class name="TBR.Regression.FullTesting.CloneJob" ></class>  
+    </classes>
+</test>
+<test name="for Assign-Job">
+    <classes>
+        <class name="TBR.Regression.FullTesting.AssignJob" ></class>  
+    </classes>
+</test>
+<test name="for Match-Candidate">
+    <classes>
+        <class name="TBR.Regression.FullTesting.MatchCandidate" ></class>  
+    </classes>
+</test>
+<test name="for Advertise-Pool-By-Application">
+    <classes>
+        <class name="TBR.Regression.FullTesting.AdvertisePoolByApplication" ></class>  
+    </classes>
+</test>
+<test name="for Advertise-Pool-By-Assignment">
+    <classes>
+        <class name="TBR.Regression.FullTesting.AdvertisePoolByAssignment" ></class>  
+    </classes>
+</test>
+<test name="for Add-Select-New-Template">
+    <classes>
+        <class name="TBR.Regression.FullTesting.AddSelectNewTemplate" ></class>  
+    </classes>
+</test>
+</suite>

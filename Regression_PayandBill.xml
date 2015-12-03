@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression.PayandBill">
+<test name="for Generate-New-Timesheet-By-Client">
+    <classes>
+        <class name="TBR.Regression.PayandBill.GenerateNewTimeSheetByClient" ></class>  
+    </classes>
+</test>
+<test name="for Generate-New-Timesheet-By-Assignment">
+    <classes>
+        <class name="TBR.Regression.PayandBill.GenerateNewTimesheetByAssignment" ></class>  
+    </classes>
+</test>
+<test name="for Generate-Client-Timesheet-Approval">
+    <classes>
+        <class name="TBR.Regression.PayandBill.GenerateClientTimesheetApproval" ></class>  
+    </classes>
+</test>
+<test name="for Export-Timesheets">
+    <classes>
+        <class name="TBR.Regression.PayandBill.ExportTimesheets" ></class>  
+    </classes>
+</test>
+<test name="for Generate-New-Payslip">
+    <classes>
+        <class name="TBR.Regression.PayandBill.GenerateNewPayslip" ></class>  
+    </classes>
+</test>
+<test name="for Export-Payslip">
+    <classes>
+        <class name="TBR.Regression.PayandBill.ExportPayslip" ></class>  
+    </classes>
+</test>
+<test name="for Generate-New-Invoice">
+    <classes>
+        <class name="TBR.Regression.PayandBill.GenerateNewInvoice" ></class>  
+    </classes>
+</test>
+<test name="for Export-Invoice">
+    <classes>
+        <class name="TBR.Regression.PayandBill.ExportInvoice" ></class>  
+    </classes>
+</test>
+</suite>

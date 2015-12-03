@@ -2,7 +2,6 @@ package TBR.Regression.Worker;
 
 import java.io.IOException;
 
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class ExportCandidates extends CandidateRegressionSuiteBase {

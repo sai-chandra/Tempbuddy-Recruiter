@@ -1,4 +1,4 @@
-package TBR.Regression_Testcases;
+package TBR.Regression.PayandBill;
 
 import java.io.IOException;
 
@@ -6,8 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ExportTimesheets extends RegressionSuiteBase{
-	
+public class ExportTimesheets extends PayandBillRegressionSuitebase{
 	@Test
 	public void exportTimesheetrough() throws IOException, InterruptedException{
 		initialize();
@@ -17,7 +16,7 @@ public class ExportTimesheets extends RegressionSuiteBase{
 		
 		//get the current window handle
 		String parentHandle = driver.getWindowHandle();
-		
+				
 		//moving on to payslip for generating new payslip
 		getObject("payBillX").click();
 		getObject("timeSheetLinkX").click();
@@ -43,15 +42,14 @@ public class ExportTimesheets extends RegressionSuiteBase{
 		getObjectByCss("exportExportTimesheetCss").click();
 		
 		for (String winHandle : driver.getWindowHandles()){
-		//switch focus of webdriver to the next found window handle(that's your newly opened window)
-		driver.switchTo().window(winHandle);
-		}
-		
-		String message = getObjectText("exportNothingToExport");
-		System.out.println(message);
-		
-		Assert.assertEquals(message, "Nothing to export");
-		System.out.println("success, nothing to export");
-		}
-	}
-
+			//switch focus of webdriver to the next found window handle(that's your newly opened window)
+			driver.switchTo().window(winHandle);
+			}
+			
+			String message = getObjectText("exportNothingToExport");
+			System.out.println(message);
+			
+			Assert.assertEquals(message, "Nothing to export");
+			System.out.println("success, nothing to export");
+			}
+}

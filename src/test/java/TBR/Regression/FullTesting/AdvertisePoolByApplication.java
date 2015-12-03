@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
-public class AdvetisePoolByApplication extends FullTestingRegressionSuiteBase{
+public class AdvertisePoolByApplication extends FullTestingRegressionSuiteBase{
 	
 	@DataProvider
 	public Object[][] getAdvertiseJobPoolByApplicationData(){

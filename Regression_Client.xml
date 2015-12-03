@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression.Client">
+<test name="for Add-New-Client">
+    <classes>
+        <class name="TBR.Regression.Client.AddNewClient" ></class>  
+    </classes>
+</test>
+</suite>

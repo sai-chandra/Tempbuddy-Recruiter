@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression.Worker">
+<test name="for Add-New-Candidate">
+    <classes>
+        <class name="TBR.Regression.Worker.AddNewCandidate" ></class>  
+    </classes>
+</test>
+<test name="for Candidate-Pools-By-Application">
+    <classes>
+        <class name="TBR.Regression.Worker.CandidatePoolsByApplication" ></class>  
+    </classes>
+</test>
+<test name="for Candidate-Pools-By-Assignment">
+    <classes>
+        <class name="TBR.Regression.Worker.CandidatePoolsByAssignment" ></class>  
+    </classes>
+</test>
+</suite>
