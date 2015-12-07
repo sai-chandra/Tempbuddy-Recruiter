@@ -31,7 +31,7 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(9000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -54,6 +54,7 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 		/*Add New Job-Step6: Match Jobs*/
 		LOGS.debug("on Step6: Match Jobs");
 	    System.out.println("moves on to Step 6 Match Jobs");
+	    waitForElementClickableId(10, "dontMatchId");
 	    getObjectById("dontMatchId").click();
 	    getObjectByCss("finishCss").click();
 	    LOGS.debug("end of Step6: Match Jobs");
@@ -75,7 +76,7 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 	    /*on Dashboard=>Jobs=>All Jobs*/
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);

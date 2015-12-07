@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 
 import TBR.TestBase.TestBase;
@@ -27,6 +28,12 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	//driver.quit();
 	}
 	
+	@AfterTest
+	public void close(){
+	driver.close();
+	
+	}
+	
 	/*Add New Job-Step1: Client Information*/
 	public void step1ClientInformation(Hashtable<String, String> data){
 		LOGS.debug("on Step1: Client Information");
@@ -40,7 +47,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	
     /*Add New Job-Step 2:Basic Information & Step 3:Billing Information*/
 	/*Add New Job-step 2 Basic Information*/
-	public void step2Step3AddNewJob(Hashtable<String, String> data){
+	public void step2Step3AddNewJob(Hashtable<String, String> data) throws InterruptedException{
 		LOGS.debug("on Step2: Basic Information");
 		explicitWaitId("biTitleId");
 	    getObjectById("biTitleId").sendKeys(data.get("cTitleS2"));
@@ -67,6 +74,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    LOGS.debug("number of hours fixed are"+HoursFixed);
 	    System.out.println("number of hours fixed are"+HoursFixed);
 	    
+	    Thread.sleep(3000);
 	    getObject("biAdvancedX").click();
 	    getObject("biStrictInX").click();
 	    getObject("biStrictOutX").click();
@@ -139,16 +147,21 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	   }
 	
 	/*Add New Job-Step4: Set Approvers*/
-	public void step4SetApprovers(Hashtable<String, String> data){
+	public void step4SetApprovers(Hashtable<String, String> data) throws InterruptedException{
 		LOGS.debug("on Step4: Set Approvers");
 	    getObjectById("selectAgencyApproverId").click();
 	    getObject("addAgencyApproverX").click();
 	    getObject("newAgencyApproverX").click();
+	    waitForElement(10, "newApproverCloseX");
 	    getObject("newApproverCloseX").click();
+	    Thread.sleep(2000);
 	    getObjectById("selectClientContactId").click();
 	    getObject("addClientContactX").click();
 	    getObject("newClientContactX").click();
+	    waitForElement(10, "newClientCloseX");
 	    getObject("newClientCloseX").click();
+	    Thread.sleep(3000);
+	    //waitForElementClickableCss(10, "nextStep4cSS");
 	    getObjectByCss("nextStep4cSS").click();
 	    LOGS.debug("end of Step4: Set Approvers");
 	}
@@ -157,6 +170,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	public void step5Criteria(Hashtable<String, String> data){
 		LOGS.debug("on Step5: Criteria");
 		System.out.println("moves on to Step 5 Criteria");
+		waitForElementClickable(10, "tagsX");
 	    getObject("tagsX").click();
 	    getObject("categoryX").click();
 	    getObject("categoryEditFieldX").sendKeys(data.get("CategoryStep5"));
@@ -207,6 +221,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 		 LOGS.debug("number of hours fixed are"+HoursFixed);
 		 System.out.println("number of hours fixed are"+HoursFixed);
 		    
+		 waitForElementClickable(10, "biAdvancedX");
 		 getObject("biAdvancedX").click();
 		 getObject("biStrictInX").click();
 		 getObject("biStrictOutX").click();
@@ -239,6 +254,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	public void step6AdvertisePool(){
 		LOGS.debug("on Step6: Match Jobs");
 		System.out.println("moves on to Step 6 Match Jobs");
+		waitForElementClickable(10, "jobPayRateOverwriteX");
 		getObject("jobPayRateOverwriteX").click();
 		getObjectById("jobAdvertisePoolId").click();
 	    waitForElementClickableId(10, "jobSelectPoolId");
@@ -275,6 +291,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	public void step6MatchJob() throws InterruptedException{
 	LOGS.debug("on Step6: Match Jobs");
     System.out.println("moves on to Step 6 Match Jobs");
+    waitForElementClickableId(10, "dontMatchId");
     getObjectById("dontMatchId").click();
     getObjectByCss("finishCss").click();
     LOGS.debug("end of Step6: Match Jobs");

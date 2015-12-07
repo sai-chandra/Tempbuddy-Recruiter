@@ -52,6 +52,7 @@ public class MatchCandidate extends FullTestingRegressionSuiteBase{
 		/*Add New Job-Step6: Match Jobs*/
 		LOGS.debug("on Step6: Match Jobs");
 	    System.out.println("moves on to Step 6 Match Jobs");
+	    waitForElementClickableId(10, "matchId");
 	    getObjectById("matchId").click();
 	    getObjectByCss("finishCss").click();
 	    LOGS.debug("end of Step6: Match Jobs");

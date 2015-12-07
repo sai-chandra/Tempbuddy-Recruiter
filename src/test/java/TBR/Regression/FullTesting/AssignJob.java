@@ -57,6 +57,7 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		/*moves on to Step 6 Match Jobs*/
 		LOGS.debug("on Step6: Match Jobs");
 	    System.out.println("moves on to Step 6 Match Jobs");
+	    waitForElement(10, "jobPayRateOverwriteX");
 	    getObject("jobPayRateOverwriteX").click();
 	    getObjectById("assignCandidateId").click();
 	    getObjectById("candidateNameStep6").click();
