@@ -3,6 +3,7 @@ package TBR.Regression.Worker;
 import java.io.IOException;
 
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 
 import TBR.TestBase.TestBase;
@@ -65,4 +66,8 @@ public class CandidateRegressionSuiteBase extends TestBase {
     System.out.println("here");
     }
     
+    @AfterTest
+    public void close(){
+    driver.close();
+    }
 }

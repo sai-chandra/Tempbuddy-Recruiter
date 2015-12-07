@@ -87,7 +87,10 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     getObject("candidateNextStep4X").click();
     
     //moving on to Step 5 Criteria
+    waitForElement(10, "candidateCategoryX");
+    //Thread.sleep(4000);
     getObject("candidateCategoryX").click();
+   
     getObject("candidateCategoryX").sendKeys(data.get("Category"));
     getObject("candidateCategoryX").sendKeys(Keys.RETURN);
     getObject("candidateCustomAttributeShowX").click();
@@ -129,7 +132,7 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     
    
 	//explicitWaitXpath("candidateMatchX");
-    Thread.sleep(8000);
+    Thread.sleep(14000);
     String candidateNameAppeared = getObject("candidateMatchX").getText();
     System.out.println("candidate appeared on the screen is = "+candidateNameAppeared);
     Assert.assertEquals(candidateNameAppeared, candidateName);
