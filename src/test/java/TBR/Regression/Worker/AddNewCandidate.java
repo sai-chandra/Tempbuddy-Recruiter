@@ -23,7 +23,9 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
 	openBrowser();
 	driver.get(CONFIG.getProperty("testSiteName"));
 	login_Valid();
+	Actions action = new Actions(driver);
 	getObject("candLinkX").click();
+	waitForElement(10, "addNewCandidateX");
 	getObject("addNewCandidateX").click();
 	waitForElementClickableId(10, "candidateNameId");
 	//waitForElementClickableId(10, "candidateNameId");
@@ -47,6 +49,7 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
 	Select monthDob = new Select(getObjectByCss("candidateMonthCSS"));
 	monthDob.selectByVisibleText("Oct");
     getObject("candidateDayDateX").click();
+    waitForElementClickableId(10, "candidateAddressId");
 	getObjectById("candidateAddressId").click();
     getObjectById("candidateAddressId").sendKeys(data.get("CandidateAddress"));
     Actions hover = new Actions(driver);
@@ -88,13 +91,16 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     
     //moving on to Step 5 Criteria
     waitForElement(10, "candidateCategoryX");
-    //Thread.sleep(4000);
     getObject("candidateCategoryX").click();
-   
-    getObject("candidateCategoryX").sendKeys(data.get("Category"));
-    getObject("candidateCategoryX").sendKeys(Keys.RETURN);
+    getObject("categoryEditFieldX").click();
+    getObject("categoryEditFieldX").sendKeys(data.get("Category"));
+    getObject("candidateSelectDriverX").click();
+    //getObject("candidateCategoryX").sendKeys(Keys.RETURN);
+    
+    waitForElement(10, "candidateCustomAttributeShowX");
     getObject("candidateCustomAttributeShowX").click();
-   // explicitWaitXpath("candidatePassportId");
+
+    waitForElementClickableId(10, "candidatePassportId");
     getObjectById("candidatePassportId").click();
     Select month = new Select(getObject("candidatePassportMonthX"));
     month.selectByVisibleText("Oct");

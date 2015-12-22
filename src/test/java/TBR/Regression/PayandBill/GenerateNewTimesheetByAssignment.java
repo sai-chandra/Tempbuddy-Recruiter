@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuitebase {
 	
-	public static String jobTitle = "qwertyjob";
+	public static String jobTitle = "AddJob";
 	@Test
 	public void generateNewTimesheetByAssignment() throws InterruptedException{
 		browserUrl();
@@ -15,11 +15,13 @@ public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuiteb
 		payBilltoTimesheet();
 		
 		//clicks on generate Timesheet
+		waitForElementClickable(10, "timesheetGenerateX");
 		getObject("timesheetGenerateX").click();
 		
 		//moves on to Step 1- Filtering By Assignment
 		LOGS.debug("moves on to Step 1- Filtering By Assignment");
 		System.out.println("moves on to Step 1- Filtering By Assignment");
+		waitForElementClickableId(10, "timesheetCandidateNameId");
 		getObjectById("timesheetCandidateNameId").click();
 		waitForElementClickableId(10, "timesheetCandidateNameId");
 		getObjectById("timesheetCandidateNameId").sendKeys("Sherlock");
@@ -27,21 +29,24 @@ public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuiteb
 		getObjectByLinkText("sherlockCandidateLt").click();
 		getObjectById("timesheetAssignmentTitleId").click();
 		waitForElementClickableId(10, "timesheetAssignmentTitleId");
-		getObjectById("timesheetAssignmentTitleId").sendKeys("qwertyjob");
+		getObjectById("timesheetAssignmentTitleId").sendKeys("AddJob");
 		
-		getObjectByLinkText("qwertyJobLt").click();
+		waitForElementClickableLinkText(10, "AddJobLt");
+		getObjectByLinkText("AddJobLt").click();
 		getObject("timesheetByAssignmentNextX").click();
 		
 		//moves on to step 2-choose by date
 		LOGS.debug("moves on to step 2-choose by date");
 		System.out.println("moves on to step 2-choose by date");
+		waitForElementClickableId(10, "timesheetChooseDateRangeId");
 		getObjectById("timesheetChooseDateRangeId").click();
 		Thread.sleep(3000);
 		Select monthByAssignment = new Select(getObject("candidatePassportMonthX"));
-		monthByAssignment.selectByVisibleText("Nov");
+		monthByAssignment.selectByVisibleText("Dec");
 	    Select yearByAssignment = new Select(getObject("candidatePassportYearX"));
 	    yearByAssignment.selectByValue("2015");
-	    getObject("timesheetNov28X").click();
+	    waitForElementClickable(10, "dec8x");
+	    getObject("dec8x").click();
 	    getObject("timesheetDateRangeFinishX").click();
 	    Thread.sleep(6000);
 	    
@@ -57,7 +62,7 @@ public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuiteb
 	    //now click on all time sheets
 	    getObject("allTimeSheetsX").click();
 	    getObject("timesheetFilterX").click();
-	    getObject("timesheetFilterX").sendKeys("qwertyjob");
+	    getObject("timesheetFilterX").sendKeys("AddJob");
 	    Thread.sleep(5000);
 	    String jobName = getObject("firstSearchedJobX").getText();
 	    System.out.println(jobName);

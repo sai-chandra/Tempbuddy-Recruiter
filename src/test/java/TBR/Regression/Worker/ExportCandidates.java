@@ -12,6 +12,7 @@ public class ExportCandidates extends CandidateRegressionSuiteBase {
 		
 		//moving on to payslip for generating new payslip
 		getObject("candLinkX").click();
+		waitForElement(10, "exportCandidatesX");
 		getObject("exportCandidatesX").click();
 		
 		/*//for Export candidates Date Starting
@@ -31,6 +32,7 @@ public class ExportCandidates extends CandidateRegressionSuiteBase {
 		getObject("exportDateStartingNov28X").click();
 		//Thread.sleep(2000);
 */		
+		waitForElement(10, "exportExportX");
 		getObject("exportExportX").click();
  }
 }

@@ -17,6 +17,7 @@ public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 		getObject("payBillX").click();
 	    waitForElement(10, "payslipLinkX");
 	    getObject("payslipLinkX").click();
+	    waitForElementClickable(10, "payslipGenerateNewPayslipX");
 	    getObject("payslipGenerateNewPayslipX").click();
 	    Thread.sleep(3000);
 		
@@ -29,8 +30,8 @@ public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 	    monthForPayslip.selectByVisibleText("Dec");
 	    Select yearForPayslip = new Select(getObject("yearDatePickerX"));
 	    yearForPayslip.selectByValue("2015");
-	    Thread.sleep(4000);
-	    getObject("dateDatePickerSep3X").click();
+	    waitForElementClickable(10, "dec8x");
+	    getObject("dec8x").click();
 	    getObject("payslipGenerateX").click();
 	    Thread.sleep(8000);
 	    
@@ -38,6 +39,7 @@ public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 	    getObject("payslipAllPayslipsX").click();
 	    getObject("payslipsFilterX").click();
 	    getObject("payslipsFilterX").sendKeys("Sherlock");
+	    Thread.sleep(3000);
         // waitForElementClickableLinkText(10, "sherlockCandidateLt");
 	    //getObjectByLinkText("sherlockCandidateLt").click();
 	    String paySlipFirstCandidate = getObjectText("payslipsFirstCandidateX");

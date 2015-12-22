@@ -13,6 +13,7 @@ public class CandidatePoolsByApplication extends CandidateRegressionSuiteBase{
 	
 	waitForElement(5, "candLinkX");
 	getObject("candLinkX").click();
+	waitForElement(10, "candidatePoolsX");
     getObject("candidatePoolsX").click();
     getObject("candidateFirstPoolNameMessageIconX").click();
     

@@ -12,6 +12,7 @@ public class CandidatePoolsByAssignment extends CandidateRegressionSuiteBase{
 	browserUrl();
     
 	getObject("candLinkX").click();
+	waitForElement(10, "candidatePoolsX");
     getObject("candidatePoolsX").click();
     getObject("candidateFirstPoolNameMessageIconX").click();
     

@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 	public class GenerateNewTimeSheetByClient extends PayandBillRegressionSuitebase {
-		public static String jobTitle = "Test Day rate";
+		public static String jobTitle = "testtimesheet";
 		@Test
 		public void generateNewTimesheetByClient() throws InterruptedException{
 			browserUrl();
@@ -14,9 +14,11 @@ import org.testng.annotations.Test;
 			payBilltoTimesheet();
 			
 			//clicks on generate Timesheet
+			waitForElementClickable(10, "timesheetGenerateX");
 			getObject("timesheetGenerateX").click();
 			
 			//clicks on By Client
+			waitForElementClickable(10, "timesheetByClientX");
 			getObject("timesheetByClientX").click();
 			
 			//moves on to Step 1- Filtering By Client
@@ -31,20 +33,21 @@ import org.testng.annotations.Test;
 			//moves on to Step 2 Choose Date Range
 			LOGS.debug("moves on to step 2- Choose date Range");
 			System.out.println("moves on to step 2- Choose date Range");
+			waitForElementClickableId(10, "timesheetByClientDateRangeId");
 			getObjectById("timesheetByClientDateRangeId").click();
 			Thread.sleep(3000);
 			Select monthByAssignment = new Select(getObject("timesheetByClientMonthX"));
-			monthByAssignment.selectByVisibleText("Nov");
+			monthByAssignment.selectByVisibleText("Dec");
 		    Select yearByAssignment = new Select(getObject("timesheetByClientYearX"));
 		    yearByAssignment.selectByValue("2015");
-		    getObject("timesheetNov28X").click();
+		    getObject("dec5X").click();
 		    getObject("timesheetByClientFinishX").click();
 		    Thread.sleep(6000);
 		    
 		    //now click on all time sheets
 		    getObject("allTimeSheetsX").click();
 		    getObject("timesheetFilterX").click();
-		    getObject("timesheetFilterX").sendKeys("Test Day rate");
+		    getObject("timesheetFilterX").sendKeys("testtimesheet");
 		    Thread.sleep(8000);
 		    String jobName = getObject("firstSearchedJobX").getText();
 		    System.out.println(jobName);

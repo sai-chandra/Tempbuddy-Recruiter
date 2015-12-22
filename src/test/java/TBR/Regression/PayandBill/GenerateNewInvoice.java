@@ -30,7 +30,10 @@ public class GenerateNewInvoice extends PayandBillRegressionSuitebase{
 	    yearInvoice.selectByValue("2015");
 	    getObject("dec31X").click();
 	    getObject("invoiceGenerateX").click();
+	    Thread.sleep(6000);
 	    getObject("invoiceAllInvoicesX").click();
+	    
+	   
 	    getObject("invoiceFilterX").click();
 	    getObject("invoiceFilterX").sendKeys("Watsons");
 	    Thread.sleep(3000);

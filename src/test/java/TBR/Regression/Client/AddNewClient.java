@@ -20,6 +20,7 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 		browserUrl();
 		
 		getObject("clientsLinkx").click();
+		waitForElementClickable(10, "addNewClientX");
 		getObject("addNewClientX").click();
 		
 		/*on Step 1 Basic information*/
@@ -36,6 +37,7 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 		System.out.println("success on Step 1 Basic Information");
 		
 		//moves on to step 2 Contact information
+		waitForElementClickable(10, "addContactX");
 		getObject("addContactX").click();
 		System.out.println("moves on to Add contact screen");
 		waitForElementId(10, "acNameId");
@@ -47,17 +49,27 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 		getObjectById("acAlterPhone1").sendKeys(data.get("AddContactAlternativePhone"));
 		getObjectById("acAlterPhone2").sendKeys(data.get("AddContactAlternativePhone1"));
 		getObject("addContactButtonX").click();
-		getObject("nextS2X").click();
+		//waitForElementClickable(10, "nextS2X");
+		Thread.sleep(3000);
+		clickAction("nextS2X");
+		//clickAction("nextS2X");
+		//getObject("nextS2X").click();
 		System.out.println("success on Step 2 Contact Information");
 		
+		Thread.sleep(4000);
 		/*moves on to Create New Client Step 3: Additional Locations*/
 		System.out.println("success on Step 3 Additional Location");
-	    getObject("addLocS3X").click();
+		//waitForElementClickable(10, "addLocS3X");
+		clickAction("addLocS3X");
+	    //getObject("addLocS3X").click();
+		//waitForElementClickableId(10, "clientCreatLocationLabelId");
+		Thread.sleep(3000);
         getObjectById("clientCreatLocationLabelId").sendKeys(data.get("AddLocationLabel"));
         getObjectById("clientCreateAddressId").sendKeys(data.get("AddClientAddress"));
         getObjectById("clientCreatePhonesId").sendKeys(data.get("AddClientsPhones"));
         getObject("clientCreateAddX").click();
-        getObjectByCss("finishS3Css").click();
+        clickActionCss("finishS3Css");
+        //getObjectByCss("finishS3Css").click();
 	    Thread.sleep(5000);
 	    driver.navigate().refresh();
 	    /*moves on to dash board*/
@@ -72,7 +84,7 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 	    getObject("clientSearchFieldX").click();
 	    getObject("clientSearchFieldX").sendKeys(clientName);
 	    
-	    Thread.sleep(9000);
+	    Thread.sleep(25000);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
 	    System.out.println("the client appeared on the screen is" +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);
