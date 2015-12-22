@@ -12,15 +12,15 @@ import TBR.TestUtil.Email;
 import TBR.TestUtil.HTMLParser;
 import TBR.TestUtil.TestUtil;
 
-public class AssignJob extends FullTestingRegressionSuiteBase{
-	
+public class AssignJobCandidateAcceptsClientRejects extends FullTestingRegressionSuiteBase{
+
 	@DataProvider
-	public Object[][] getAssignJobData(){
+	public Object[][] getAssignJobCanAcceptsClientRejectData(){
     //return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignParameters");
-    return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignCandidate");
+    return TestUtil.getDataIntoHashTable(JobsExcel, "AssignJobCanAcceptsClientReject");
 	}
     
-	@Test(dataProvider="getAssignJobData")
+	@Test(dataProvider="getAssignJobCanAcceptsClientRejectData")
 	public void assignJobToCandidate(Hashtable<String, String> data) throws InterruptedException{
 		
 		/*browserUrl() opens up a browser, goes to Staging url & performs login.*/
@@ -34,7 +34,7 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(12000);
+		Thread.sleep(6000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -73,40 +73,6 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	    ConfirmSendWizards();
 	    Thread.sleep(15000);
 	    
-	    /*goes to candidate profile and refreshes*/
-	    waitForElementClickable(10, "candLinkX");
-	    Thread.sleep(3000);
-	    getObject("candLinkX").click();
-	    waitForElementClickable(10, "allCandidatesX");
-	    getObject("allCandidatesX").click();
-	    Thread.sleep(8000);
-	    waitForElementClickable(20, "searchCandidateX");
-	    //getObject("searchCandidateX").sendKeys(data.get("CandidateName"));
-	    getObject("searchCandidateX").sendKeys("jack");
-	    Thread.sleep(18000);
-	    waitForElementClickable(10, "candidateFirstEyeIconX");
-	    getObject("candidateFirstEyeIconX").click();
-	    waitForElementClickable(10, "candidateNameFieldX");
-	    String candidateNameAppeared = getObjectText("candidateNameFieldX");
-	    
-	    Thread.sleep(12000);
-	    /*Assert equals to, for checking is it the same candidate we are looking for*/
-	    Assert.assertEquals(candidateNameAppeared, "jack (jacky )");
-	    System.out.println("candidates matched");
-	    Thread.sleep(10000);
-	    driver.navigate().refresh();
-	    Thread.sleep(5000);
-	    waitForElementClickable(15, "candidateNameFieldX");
-	    String candidateNameAppearedAfterRefresh = getObjectText("candidateNameFieldX");
-	    
-	    /*Assert equals to, for checking is it the same candidate we are looking for*/
-	    Assert.assertEquals(candidateNameAppearedAfterRefresh, "jack (jacky )");
-	    System.out.println("candidates matched after refresh");
-	    
-	   /* //click on dash board
-	    getObject("dashBoardLinkX").click();
-	    Thread.sleep(12000);
-	    
 	    String countUnassignJobsNumAfter = getObjectById("unassignedJobsCountId").getText();
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
@@ -116,13 +82,11 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
 		LOGS.debug("if the before and after conditions are not equal then the job is successfully saved");
 		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
-		*/
 		
 		/*on Dashboard=>Jobs=>All Jobs*/
-	    getObject("jobsLinkX").click();
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
+		Thread.sleep(12000);
 		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
@@ -133,7 +97,7 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		
 		//click on dash board
 	    getObject("dashBoardLinkX").click();
-	    Thread.sleep(12000);
+	    Thread.sleep(5000);
 	    
 		//gets the unassigned jobs number from the dash board
 		String countUnassignJobsNumAfterAssigned = getObjectById("unassignedJobsCountId").getText();
@@ -156,10 +120,10 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		String decideAssignmentURL = html.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmail);
 		goToUrl(decideAssignmentURL);
 		System.out.println(decideAssignmentURL);
-		String AssignmentRejected = getObjectCssText("CandidateRejectCss");
-	    System.out.println(AssignmentRejected);
-	    Assert.assertEquals(AssignmentRejected, "Assignment Rejected. TempBuddy will notify Staging agency");
-	    System.out.println("Reject messages matched");
+		String AssignmentAccepted = getObjectCssText("CandidateAcceptCss");
+	    System.out.println(AssignmentAccepted);
+	    Assert.assertEquals(AssignmentAccepted, "Assignment confirmed");
+	    System.out.println("Accept messages matched");
 		} catch (Exception e) {
 		System.out.println("catch");
 		// TODO Auto-generated catch block
@@ -177,14 +141,14 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	    System.out.println(contentEmailClient);
 	    HTMLParser html1 = new HTMLParser();
 	    System.out.println("parser");
-	    System.out.println("Looking for button with ID button_"+data.get("CandidateAction")+"_assignment");
-	    String decideAssignmentURL1 = html1.getTagAttr("#button_"+data.get("CandidateAction")+"_assignment", "href", contentEmailClient);
+	    System.out.println("Looking for button with ID button_"+data.get("ClientAction")+"_assignment");
+	    String decideAssignmentURL1 = html1.getTagAttr("#button_"+data.get("ClientAction")+"_assignment", "href", contentEmailClient);
 	    goToUrl(decideAssignmentURL1);
 	    System.out.println(decideAssignmentURL1);
-	    String LinkExpired = getObjectCssText("ClientlinkExpiredCss");
-	    System.out.println(LinkExpired);
-	    Assert.assertEquals(LinkExpired, "The link has expired");
-	    System.out.println("Link expired message matched");
+	    String ClientReject = getObjectCssText("ClientlinkRejectCss");
+	    System.out.println(ClientReject);
+	    Assert.assertEquals(ClientReject, "Candidate has been rejected for this assignment. TempBuddy will notify the Agency.");
+	    System.out.println("Reject messages matched");
 	    } catch (Exception e) {
 	    System.out.println("catch");
 	    // TODO Auto-generated catch block

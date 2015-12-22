@@ -30,7 +30,7 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		//goes back to the home page dashboard page
@@ -38,24 +38,26 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		
 		waitForElement(5, "jobsLinkX");
 		getObject("jobsLinkX").click();
+		waitForElementClickable(10, "addNewJobX");
 		getObject("addNewJobX").click();
 		
 		/*moves on to Create New Job Step1: Client Information*/
 		waitForElementClickableId(10, "cNameId");
 	    System.out.println("moves on to Create New Job Step1: Client Information");
 	    getObjectById("cNameId").sendKeys(data.get("cnameS1"));
-	    waitForElementClickableLinkText(10, "watsonsClientLt");
+	    //waitForElementClickableLinkText(10, "watsonsClientLt");
 	    getObjectByLinkText("watsonsClientLt").click();
 	    
 	    //click on Clone Job
 	    getObject("cCloneJobX").click();
 	    getObjectById("cloneCopyFromId").sendKeys(data.get("CopyFrom"));
 	    getObjectByLinkText("CloneJobLt").click();
+	    Thread.sleep(3000);
 	    waitForElementClickableId(10, "cloneNewJobTitleId");
 	    getObjectById("cloneNewJobTitleId").click();
 	    getObjectById("cloneNewJobTitleId").clear();
-	    getObjectById("cloneNewJobTitleId").clear();
-	    Thread.sleep(3000);
+	    //getObjectById("cloneNewJobTitleId").clear();
+	    Thread.sleep(4000);
 	    getObjectById("cloneNewJobTitleId").sendKeys(data.get("NewJobTitle"));
 	    getObjectById("cloneStartDayId").click();
 	    Thread.sleep(4000);
@@ -90,7 +92,7 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
 		
 		getObject("allJobsX").click();
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		
 		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
@@ -103,7 +105,7 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		Thread.sleep(7000);
 		String newJobTitle = (data.get("JobsFilter"));
 		System.out.println(newJobTitle);
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 	    
 		String displayedJobTitle = getObjectText("allJobsFirstCellTitleX");
 		System.out.println(displayedJobTitle);

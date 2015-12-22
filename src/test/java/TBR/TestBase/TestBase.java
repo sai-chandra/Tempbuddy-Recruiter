@@ -3,7 +3,10 @@ package TBR.TestBase;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +39,7 @@ public class TestBase {
 	public static Properties CONFIG = null;
 	public static Properties OR = null;
 	public static WebDriver driver = null;
+	//public static WebDriver driver1 = null;
 	public static Xls_Reader excel = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\TBR\\Xlsdata_Files\\TestData.xlsx");
 	public static Xls_Reader JobsExcel = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\TBR\\Xlsdata_Files\\Jobs.xlsx");
 	public static Xls_Reader ClientsExcel = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\TBR\\Xlsdata_Files\\Clients.xlsx");
@@ -634,6 +638,38 @@ public class TestBase {
 					 System.out.println(successMessage);
 					 Assert.assertEquals(successMessage, "ALL POSITIONS ARE NOW FILLED");
 					 LOGS.debug("a candidate has been matched successfully");		
+				}
+				
+				public void timeStamp(){
+				DateFormat df = new SimpleDateFormat("yyyy_MMM_dd HH_mm_ss");
+				Date d = new Date();
+				String time = df.format(d);
+				System.out.println(time);
+				}
+				
+				public void addTimeStamps(){
+				//int totalSeconds = ((hours*60)+ minutes) * 60 + seconds;
+				}
+				
+				//Click xpath element using Actions class
+				public void clickAction(String xpath){
+				WebElement element = getObject(xpath);
+				Actions action = new Actions(driver);
+				action.moveToElement(element).click().perform();
+				}
+				
+				//Click Id element using Actions class
+				public void clickActionId(String Id){
+				WebElement elementId = getObjectById(Id);
+				Actions action = new Actions(driver);
+				action.moveToElement(elementId).click().perform();
+				}
+				
+				//Click Id element using Actions class
+				public void clickActionCss(String css){
+				WebElement elementCss = getObjectByCss(css);
+				Actions action = new Actions(driver);
+				action.moveToElement(elementCss).click().perform();
 				}
 
 			}
