@@ -172,7 +172,7 @@ public class JobsDontMatch extends RegressionSuiteBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number + 1 is equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter, Integer.valueOf(data.get("cNumPos")));
 		/*Integer n = Integer.valueOf(countUnassignJobsNumBefore);
 		Integer add = n+1;//countUnassignJobsNumBefore+1;
 		System.out.println(add);

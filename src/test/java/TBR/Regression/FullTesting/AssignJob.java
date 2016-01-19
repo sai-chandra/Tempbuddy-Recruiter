@@ -3,9 +3,12 @@ package TBR.Regression.FullTesting;
 import java.util.Hashtable;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.Email;
@@ -14,6 +17,7 @@ import TBR.TestUtil.TestUtil;
 
 public class AssignJob extends FullTestingRegressionSuiteBase{
 	
+	//Candidate : Jack
 	@DataProvider
 	public Object[][] getAssignJobData(){
     //return TestUtil.getDataIntoHashTable(JobsExcel, "JobsFlowAssignParameters");
@@ -23,8 +27,14 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	@Test(dataProvider="getAssignJobData")
 	public void assignJobToCandidate(Hashtable<String, String> data) throws InterruptedException{
 		
+		logger =report.startTest("AssignJob");
+		
 		/*browserUrl() opens up a browser, goes to Staging url & performs login.*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "AssignJob"));
+		logger.log(LogStatus.PASS, path);
 		
 		/*count number of unassigned jobs is stored before creation of job*/
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
@@ -34,10 +44,14 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(12000);
-		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
+		Thread.sleep(15000);
+		
+		explicitWaitId("allJobsCountValueId");
+		String str = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
+		
 		/*navigates back to the home page dashboard page*/
 		driver.navigate().back();
 		
@@ -79,10 +93,10 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	    getObject("candLinkX").click();
 	    waitForElementClickable(10, "allCandidatesX");
 	    getObject("allCandidatesX").click();
-	    Thread.sleep(8000);
-	    waitForElementClickable(20, "searchCandidateX");
-	    //getObject("searchCandidateX").sendKeys(data.get("CandidateName"));
-	    getObject("searchCandidateX").sendKeys("jack");
+	    Thread.sleep(10000);
+	    waitForElementClickable(30, "searchCandidateX");
+	    getObject("searchCandidateX").sendKeys(data.get("CandidateName"));
+	    //getObject("searchCandidateX").sendKeys("jack");
 	    Thread.sleep(18000);
 	    waitForElementClickable(10, "candidateFirstEyeIconX");
 	    getObject("candidateFirstEyeIconX").click();
@@ -103,33 +117,34 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	    Assert.assertEquals(candidateNameAppearedAfterRefresh, "jack (jacky )");
 	    System.out.println("candidates matched after refresh");
 	    
-	   /* //click on dash board
+	    //click on dash board
 	    getObject("dashBoardLinkX").click();
 	    Thread.sleep(12000);
 	    
 	    String countUnassignJobsNumAfter = getObjectById("unassignedJobsCountId").getText();
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
-		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-				
-		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		LOGS.debug("if the before and after conditions are not equal then the job is successfully saved");
-		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
-		*/
+		//verifies whether the unassigned jobs number is equal to the unassigned jobs number after assigning Job to a candidate
+		Assert.assertEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		System.out.println("if the before and after conditions are equal then the job is successfully saved and Assigned");
 		
 		/*on Dashboard=>Jobs=>All Jobs*/
 	    getObject("jobsLinkX").click();
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
-		Thread.sleep(5000);
-		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
+		Thread.sleep(15000);
+		
+		explicitWaitId("allJobsCountValueId");
+		
+		String str1 = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		
-		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
-		LOGS.debug("Success! if the before and after conditions are not same then all jobs increment is working");
-		System.out.println("if the before and after conditions are not same then all jobs increment is working");
+		//checks whether the all jobs count is increased by one or not in the All Jobs List
+		Assert.assertEquals(allJobsValueAfterJobSaved, allJobsValueBefore+1);
+		LOGS.debug("Success! both the values are equal, then all jobs increment is working");
+		System.out.println("Success! both the values are equal, then all jobs increment is working");
 		
 		//click on dash board
 	    getObject("dashBoardLinkX").click();
@@ -195,7 +210,14 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	
 	    
 	    @AfterMethod
-        public void screenShot(){
-	    CaptureScreenShot.captureScreenShot(driver, "AssignJob");
-        }
+	    public void screenShot(ITestResult result){
+		if(result.getStatus()==ITestResult.FAILURE)
+		{
+			String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "AssignJob");
+			String image = logger.addScreenCapture(screenshot_path);
+			logger.log(LogStatus.FAIL, "AssignJob", image);
+		}
+		report.endTest(logger);
+		report.flush();
+}
 }

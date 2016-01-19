@@ -82,7 +82,7 @@ public class CloneJob extends RegressionSuiteBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter, Integer.valueOf(data.get("cNumPos")));
 		
 		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
 		System.out.println("if the before and after conditions are not equal then the job is successfully saved");

@@ -28,13 +28,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.relevantcodes.extentreports.ExtentTest;
+
 import TBR.TestUtil.ErrorUtil;
 import TBR.TestUtil.Xls_Reader;
 
-public class TestBase {
+public class TestBase extends ParallelBaseClass {
 	
 	public static boolean isInitialized = false;
 	public static boolean isBrowserOpened = false;
+	public ExtentTest logger;
 	public static Logger LOGS = null;
 	public static Properties CONFIG = null;
 	public static Properties OR = null;
@@ -419,7 +423,7 @@ public class TestBase {
 		    
 		    //explicit wait by id
 		    public void explicitWaitId(String id){
-			(new WebDriverWait(driver, 20)).until(ExpectedConditions.elementToBeClickable(getObjectById(id)));
+			(new WebDriverWait(driver, 40)).until(ExpectedConditions.elementToBeClickable(getObjectById(id)));
 					}
 		   
 		    
@@ -549,10 +553,10 @@ public class TestBase {
 				}
 				
 				//method for checking the unassigned job before number +1 is equal to unassigned job after
-				public void checkUnassignedJobIncrement(String unassignedJobsNumberBefore,String unassignedJobNumberAfter){
+				public void checkUnassignedJobIncrement(String unassignedJobsNumberBefore,String unassignedJobNumberAfter,int assignedJob){
 				
 					Integer n = Integer.valueOf(unassignedJobsNumberBefore);
-					Integer add = n+1;//countUnassignJobsNumBefore+1;
+					Integer add = n+assignedJob;//countUnassignJobsNumBefore+1;
 					//System.out.println("the int value of unassignedJobNumberBefore added with 1 is = "+add);
 					String after = String.valueOf(add);
 					//System.out.println("converting Int to String, value of unassignedJobNumberBefore added with 1 is = "+add);
@@ -571,7 +575,7 @@ public class TestBase {
 					ErrorUtil.addVerificationFailure(t);
 					System.out.println("fail");
 					}
-				    System.out.println("success");
+				    System.out.println("success, unassigned job number is increased");
 				
                  }
 				

@@ -95,9 +95,9 @@ public class JobsCommon extends TestBase{
 	    System.out.println("clicked on next in Step 2");
 	    
 	    //movin on to  Step 3 billing information
-	    getObjectById("templateNameId").click();
-	    getObject("newTemplateX").click();
-	    getObject("closeNewTemplateX").click();
+	    //getObjectById("templateNameId").click();
+	    //getObject("newTemplateX").click();
+	    //getObject("closeNewTemplateX").click();
 	    getObjectById("billingTypeId").sendKeys(data.get("BillingTypeStep3"));
 	    getObjectById("payRateId").click();
 	    getObjectById("payRateId").clear();
@@ -220,7 +220,7 @@ public class JobsCommon extends TestBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter, Integer.valueOf(data.get("cNumPos")));
 		
 		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
 		System.out.println("if the before and after conditions are not equal then the job is successfully saved");

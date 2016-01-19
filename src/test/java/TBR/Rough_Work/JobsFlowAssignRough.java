@@ -255,7 +255,7 @@ public class JobsFlowAssignRough extends RegressionSuiteBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter, Integer.valueOf(data.get("cNumPos")));
 		
 		
 		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);

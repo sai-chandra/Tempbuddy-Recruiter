@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Regression.FullTesting">
+<suite name="Regression.FullTesting" parallel="none">
 <test name="for Dont-Match-Save-Job">
     <classes>
         <class name="TBR.Regression.FullTesting.DontMatchSaveJob" ></class>  
@@ -13,6 +13,11 @@
 <test name="for Assign-Job">
     <classes>
         <class name="TBR.Regression.FullTesting.AssignJob" ></class>  
+    </classes>
+</test>
+<test name="for AssignJobCandidateAcceptsClientRejects">
+    <classes>
+        <class name="TBR.Regression.FullTesting.AssignJobCandidateAcceptsClientRejects" ></class>  
     </classes>
 </test>
 <test name="for Match-Candidate">

@@ -3,9 +3,14 @@ package TBR.Regression.FullTesting;
 import java.util.Hashtable;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 /*Adding new Template*/
 public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
@@ -17,8 +22,15 @@ public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
     
 	@Test(dataProvider="getAddSelectNewTemplateData")
 	public void addSelectNewTemplate(Hashtable<String, String> data) throws InterruptedException{
+		
+		logger =report.startTest("AddSelectNewTemplate");   
+		
 		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "AddSelectNewTemplate"));
+		logger.log(LogStatus.PASS, path);
 		
 		/*count number of unassigned jobs is stored before creation of job*/
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
@@ -28,10 +40,13 @@ public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(12000);
-		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
+		Thread.sleep(15000);
+		
+		String str = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
+		
 		/*navigates back to the home page dashboard page*/
 		driver.navigate().back();
 		
@@ -159,22 +174,33 @@ public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		
-		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		LOGS.debug("if the before and after conditions are not equal then the job is successfully saved");
-		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter, Integer.valueOf(data.get("cNumPos")));
 		
 	    /*on Dashboard=>Jobs=>All Jobs*/
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
-		Thread.sleep(12000);
-		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
+		Thread.sleep(15000);
+		
+		String str1 = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		
-		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
-		LOGS.debug("Success! if the before and after conditions are not same then all jobs increment is working");
-		System.out.println("Success! if the before and after conditions are not same then all jobs increment is working");
-		  }
+		//checks whether the all jobs count is increased by one or not in the All Jobs List
+		Assert.assertEquals(allJobsValueAfterJobSaved, allJobsValueBefore+1);
+		LOGS.debug("Success! both the values are equal, then all jobs increment is working");
+		System.out.println("Success! both the values are equal, then all jobs increment is working");
+		}
+	
+	    @AfterMethod
+		public void screenShot(ITestResult result){
+			if(result.getStatus()==ITestResult.FAILURE)
+			{
+				String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "AddSelectNewTemplate");
+				String image = logger.addScreenCapture(screenshot_path);
+				logger.log(LogStatus.FAIL, "AddSelectNewTemplate", image);
+			}
+			report.endTest(logger);
+			report.flush();
+    }
 }

@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 import TBR.TestBase.TestBase;
 
@@ -31,6 +34,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	@AfterTest
 	public void close(){
 	driver.close();
+	logger.log(LogStatus.INFO, "Browser closed");
 	
 	}
 	
@@ -58,7 +62,10 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    // getObjectById("biPurchaseId").sendKeys(data.get("cPurchaseS"));
 	    getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
 	    getObjectById("biReqAvailbilityId").click();
-	    Select month = new Select(getObject("biMonthX"));
+	    
+	    //select date month year and time
+	    dateMonthYear();
+	   /* Select month = new Select(getObject("biMonthX"));
 	    month.selectByVisibleText("Dec");
 	    Select year = new Select(getObject("biYearX"));
 	    year.selectByValue("2015"); 
@@ -72,6 +79,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    System.out.println("drag and drop success");
 	    //now click on reset to clear the values selected
 	    //getObject("biResetCalX").click();
+*/	    
 	    waitForElementClickable(10, "biCalConfirmX");
 	    getObject("biCalConfirmX").click();
 	    
@@ -190,6 +198,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 		waitForElementClickableCss(10, "assignCandidateYesCss");
 		getObjectByCss("assignCandidateYesCss").click();
 	    System.out.println("clicked on assign candidate yes");
+	    waitForElementClickableLinkText(40, "assignCandidateClientLt");
 	    getObjectByLinkText("assignCandidateClientLt").click();
 	    System.out.println("clicked on assign client");
 	    getObjectByLinkText("assignCandidateCommentsLt").click();
@@ -202,27 +211,31 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	
 	/*Add New Job-Step2: Basic Information => Required Availability*/
 	public void requiredAvailability(Hashtable<String, String> data) throws InterruptedException{
-		 LOGS.debug("on Step2: Basic Information");
-		 explicitWaitId("biTitleId");
-	     getObjectById("biTitleId").sendKeys(data.get("cTitleS2"));
-	     jobTitle = (data.get("cTitleS2"));
-	     LOGS.debug(jobTitle);
-	     System.out.println(jobTitle);
-	     // getObjectById("biPurchaseId").sendKeys(data.get("cPurchaseS"));
-	     getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
-		 getObjectById("biReqAvailbilityId").click();
-		 Select month = new Select(getObject("biMonthX"));
+		LOGS.debug("on Step2: Basic Information");
+		explicitWaitId("biTitleId");
+	    getObjectById("biTitleId").sendKeys(data.get("cTitleS2"));
+	    jobTitle = (data.get("cTitleS2"));
+	    LOGS.debug(jobTitle);
+	    System.out.println(jobTitle);
+	    // getObjectById("biPurchaseId").sendKeys(data.get("cPurchaseS"));
+	    getObject("biPurchaseX").sendKeys(data.get("cPurchaseS"));
+	    getObjectById("biReqAvailbilityId").click();
+	    
+	    //date month year time
+	    dateMonthYear();
+		/* Select month = new Select(getObject("biMonthX"));
 		 month.selectByVisibleText("Dec");
 		 waitForElementClickable(10, "biYearX");
 		 Select year = new Select(getObject("biYearX"));
-		 year.selectByValue("2015");
+		 year.selectByValue("2016");
 		 getObject("AddNewTemplatedec31X").click();
 		 Select weekPattern = new Select(getObject("biNumWeekPattern"));
 		 weekPattern.selectByValue("1");
 		 dragDrop("biTime9X", "bitime5X");
-		 System.out.println("drag and drop success");
+		 System.out.println("drag and drop success");*/
 		 //now click on reset to clear the values selected
 		 //getObject("biResetCalX").click();
+		 waitForElementClickable(10, "biCalConfirmX");
 		 getObject("biCalConfirmX").click();
 		 
 		 HoursFixed = hoursFixed("hoursRequiredId");
@@ -255,7 +268,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	
 	/*Match Candidate: looks for "ALL POSITIONS ARE NOW FILLED" success message and assertsEquals*/
 	public void matchCandidateSuccessMessage(){
-		 waitForElement(15, "matchCandidateSuccessMessageX");
+		 waitForElement(120, "matchCandidateSuccessMessageX");
 		 String successMessage = getObjectText("matchCandidateSuccessMessageX");
 		 LOGS.debug(successMessage);
 		 System.out.println(successMessage);
@@ -449,6 +462,35 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    System.out.println("formula used here is bill rate - payrate divided by payrate * 100");
 	    LOGS.debug("end of Step3: Billing Information");
 	   }
+	
+	    //Calendar for slecting date/month/year for creating jobs
+	    public void dateMonthYear(){
+	    	 Select monthpicker = new Select(getObject("monthPickerX"));
+	 	    WebElement month_selected = monthpicker.getFirstSelectedOption();
+	 	    String month = month_selected.getText();
+	 	    
+	 	    System.out.println(month);
+	 	    
+	 	    if(month.equalsIgnoreCase("Jan")||month.equalsIgnoreCase("Mar")||month.equalsIgnoreCase("May")||month.equalsIgnoreCase("Aug")||month.equalsIgnoreCase("Jul")||month.equalsIgnoreCase("Dec")||month.equalsIgnoreCase("Oct"))
+	 	    {
+	 	    	getObject("date31CalendarViewX").click();
+	 	    	//waitForElementClickable(10, "date31TimeViewX");
+	 	    	//getObject("date31TimeViewX").click();
+	 	    	dragDrop("date31TimeClick9amX", "date31TimeClick5pmX");
+	 	    }
+	 	    else if(month.equalsIgnoreCase("Feb"))
+	 	    {
+	 	    	getObject("date28CalendarViewX").click();
+	 	    	//getObject("date28TimeViewX").click();
+	 	    	dragDrop("date28TimeClick9amX", "date28TimeClick5pmX");
+	 	    }
+	 	    else
+	 	    {
+	 	    	getObject("date30CalendarViewX").click();
+	 	    	//getObject("date30TimeViewX").click();
+	 	    	dragDrop("date30TimeClick9amX", "date30TimeClick5pmX");
+	 	    }
+	    }
 	}
 
 

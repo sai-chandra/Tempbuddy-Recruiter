@@ -3,9 +3,14 @@ package TBR.Regression.FullTesting;
 import java.util.Hashtable;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
 public class CloneJob extends FullTestingRegressionSuiteBase{
@@ -18,9 +23,14 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
  @Test(dataProvider="getCloneJobData")
  public void cloneJob(Hashtable<String, String> data) throws InterruptedException{
  
-	    openBrowser();
-		driver.get(CONFIG.getProperty("testSiteName"));
-		login_Valid();
+	    logger =report.startTest("CloneJob");   
+	 
+	    /*browserUrl() opens up a browser, goes to Staging url & performs login*/
+		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "CloneJob"));
+		logger.log(LogStatus.PASS, path);
 		
 		/*count number of unassigned jobs is stored before creation of job*/
 		String countUnassignJobsNumBefore = getObjectById("unassignedJobsCountId").getText();
@@ -29,10 +39,13 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		
-		Thread.sleep(12000);
-		String allJobsValueBefore = getObjectById("allJobsCountValueId").getText();
+		Thread.sleep(15000);
+		explicitWaitId("allJobsCountValueId");
+		String str = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
+		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
+		
 		//goes back to the home page dashboard page
 		driver.navigate().back();
 		
@@ -52,15 +65,15 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 	    getObject("cCloneJobX").click();
 	    getObjectById("cloneCopyFromId").sendKeys(data.get("CopyFrom"));
 	    getObjectByLinkText("CloneJobLt").click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    waitForElementClickableId(10, "cloneNewJobTitleId");
 	    getObjectById("cloneNewJobTitleId").click();
 	    getObjectById("cloneNewJobTitleId").clear();
 	    //getObjectById("cloneNewJobTitleId").clear();
-	    Thread.sleep(4000);
+	    Thread.sleep(5000);
 	    getObjectById("cloneNewJobTitleId").sendKeys(data.get("NewJobTitle"));
 	    getObjectById("cloneStartDayId").click();
-	    Thread.sleep(4000);
+	    Thread.sleep(5000);
 	    //waitForElement(10, "cloneStartDayMonthX");
 	    getSelectedByTextXpath("cloneStartDayMonthX", "Oct");
 	    getSelectedByTextXpath("cloneStartDayYearX", "2016");
@@ -86,35 +99,45 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		System.out.println("unassigned job number after saving a job is "+countUnassignJobsNumAfter);
 		
 		//checks if the unassigned jobs number is not equal to the after value
-		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		
-		Assert.assertNotEquals(countUnassignJobsNumBefore, countUnassignJobsNumAfter);
-		System.out.println("if the before and after conditions are not equal then the job is successfully saved");
+		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter,Integer.valueOf(data.get("cNumPos")));
 		
 		getObject("allJobsX").click();
-		Thread.sleep(12000);
+		Thread.sleep(15000);
+		explicitWaitId("allJobsCountValueId");
 		
-		String allJobsValueAfterJobSaved = getObjectById("allJobsCountValueId").getText();
+		String str1 = getObjectById("allJobsCountValueId").getText();
+		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);
+		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		System.out.println("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);
 		
-		Assert.assertNotEquals(allJobsValueAfterJobSaved, allJobsValueBefore);
-		System.out.println("if the before and after conditions are not same then all jobs increment is working");
+		//checks whether the all jobs count is increased by one or not in the All Jobs List
+		Assert.assertEquals(allJobsValueAfterJobSaved, allJobsValueBefore+1);
+		LOGS.debug("Success! both the values are equal, then all jobs increment is working");
+		System.out.println("Success! both the values are equal, then all jobs increment is working");
         
 		waitForElementClickable(10, "allJobsFilterX");
 		getObject("allJobsFilterX").sendKeys(data.get("JobsFilter"));
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 		String newJobTitle = (data.get("JobsFilter"));
 		System.out.println(newJobTitle);
-		Thread.sleep(8000);
+		Thread.sleep(15000);
 	    
 		String displayedJobTitle = getObjectText("allJobsFirstCellTitleX");
 		System.out.println(displayedJobTitle);
 	    Assert.assertEquals(displayedJobTitle, newJobTitle);
 	    System.out.println("Job cloned and job displayed matched!");
-	    
-	    
-	 
- }
+	    }
+ 
+ 		@AfterMethod
+ 		public void screenShot(ITestResult result){
+ 			if(result.getStatus()==ITestResult.FAILURE)
+ 			{
+ 				String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "CloneJob");
+ 				String image = logger.addScreenCapture(screenshot_path);
+ 				logger.log(LogStatus.FAIL, "CloneJob", image);
+ 			}
+ 			report.endTest(logger);
+ 			report.flush();
 	
-
+ }
 }
