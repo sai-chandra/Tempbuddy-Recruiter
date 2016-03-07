@@ -103,7 +103,7 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	    waitForElementClickable(10, "candidateNameFieldX");
 	    String candidateNameAppeared = getObjectText("candidateNameFieldX");
 	    
-	    Thread.sleep(12000);
+	    Thread.sleep(20000);
 	    /*Assert equals to, for checking is it the same candidate we are looking for*/
 	    Assert.assertEquals(candidateNameAppeared, "jack (jacky )");
 	    System.out.println("candidates matched");

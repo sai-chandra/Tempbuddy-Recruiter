@@ -68,7 +68,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	   /* Select month = new Select(getObject("biMonthX"));
 	    month.selectByVisibleText("Dec");
 	    Select year = new Select(getObject("biYearX"));
-	    year.selectByValue("2015"); 
+	    year.selectByValue("2016"); 
 	    waitForElementClickable(10, "dec31stX");
 	    clickAction("dec31stX");
 	    //getObject("dec31stX").click();
@@ -76,10 +76,10 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    Select weekPattern = new Select(getObject("biNumWeekPattern"));
 	    weekPattern.selectByValue("1");
 	    dragDrop("biTime9X", "bitime5X");
-	    System.out.println("drag and drop success");
+	    System.out.println("drag and drop success");*/
 	    //now click on reset to clear the values selected
 	    //getObject("biResetCalX").click();
-*/	    
+	    
 	    waitForElementClickable(10, "biCalConfirmX");
 	    getObject("biCalConfirmX").click();
 	    
@@ -162,6 +162,8 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	/*Add New Job-Step4: Set Approvers*/
 	public void step4SetApprovers(Hashtable<String, String> data) throws InterruptedException{
 		LOGS.debug("on Step4: Set Approvers");
+		waitForElementClickable(10, "costConfirmButtonX");
+		getObject("costConfirmButtonX").click();
 		waitForElementClickableId(10, "selectAgencyApproverId");
 	    getObjectById("selectAgencyApproverId").click();
 	    getObject("addAgencyApproverX").click();
@@ -284,7 +286,8 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 		getObject("jobPayRateOverwriteX").click();
 		getObjectById("jobAdvertisePoolId").click();
 	    waitForElementClickableId(10, "jobSelectPoolId");
-	    selectOptionById("jobSelectPoolId", "Kevin Users");
+	    selectOptionById("jobSelectPoolId", "Sai Pool");
+	    //selectOptionById("jobSelectPoolId", "Kevin Users");
 	    getObjectByCss("finishCss").click();
 	}
 	
@@ -292,13 +295,14 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	public void step1AdvertisePoolSelectJob() throws InterruptedException{
 		waitForElementClickableCss(10, "advertiseJobNextCss");
 	    getObjectByCss("advertiseJobNextCss").click();
+	    Thread.sleep(3000);
 	    //moves on to Advertise Job Step-2 Choose Candidates
 	    waitForElementClickableId(10, "candidateSelectAllButtonLeftId");
 	    clickActionId("candidateSelectAllButtonLeftId");
 	    System.out.println("clicked");
 	    //getObjectById("candidateSelectAllButtonLeftId").click();
 	    Thread.sleep(4000);
-	    waitForElementClickable(10, "candidateListFirstOptionX");
+	    waitForElementClickable(20, "candidateListFirstOptionX");
 	    dragDropClickMoveRelease("candidateListFirstOptionX", "selectedCandidatesAreaId");
 	    waitForElementClickable(10, "candidateListFirstOptionX");
 	    dragDropClickMoveRelease("candidateListFirstOptionX", "selectedCandidatesAreaId");
@@ -468,7 +472,7 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	    	 Select monthpicker = new Select(getObject("monthPickerX"));
 	 	    WebElement month_selected = monthpicker.getFirstSelectedOption();
 	 	    String month = month_selected.getText();
-	 	    
+	 	    System.out.println("hi i am here");
 	 	    System.out.println(month);
 	 	    
 	 	    if(month.equalsIgnoreCase("Jan")||month.equalsIgnoreCase("Mar")||month.equalsIgnoreCase("May")||month.equalsIgnoreCase("Aug")||month.equalsIgnoreCase("Jul")||month.equalsIgnoreCase("Dec")||month.equalsIgnoreCase("Oct"))
@@ -480,8 +484,9 @@ public class FullTestingRegressionSuiteBase extends TestBase{
 	 	    }
 	 	    else if(month.equalsIgnoreCase("Feb"))
 	 	    {
+	 	    	System.out.println("hi i am here in feb");
+	 	    	//getObject("date29CalendarViewX").click();
 	 	    	getObject("date28CalendarViewX").click();
-	 	    	//getObject("date28TimeViewX").click();
 	 	    	dragDrop("date28TimeClick9amX", "date28TimeClick5pmX");
 	 	    }
 	 	    else

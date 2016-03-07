@@ -1,11 +1,17 @@
 package TBR.Regression.Client;
 
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
 public class AddNewClient extends ClientRegressionSuiteBase{
@@ -16,15 +22,21 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 	@Test(dataProvider="getAddNewClientData")
 	public void addNewClient(Hashtable<String, String>data) throws InterruptedException{
 		
+		logger =report.startTest("AddNewClient");
+		
 		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "AddNewClient"));
+		logger.log(LogStatus.PASS, path);
 		
 		getObject("clientsLinkx").click();
 		waitForElementClickable(10, "addNewClientX");
 		getObject("addNewClientX").click();
 		
 		/*on Step 1 Basic information*/
-		waitForElementId(10, "nameClientId");
+		waitForElementId(20, "nameClientId");
 		getObjectById("nameClientId").sendKeys(data.get("Name"));
 		String clientName = getObjectById("nameClientId").getAttribute("value");
 		System.out.println("the name of the client is" +clientName);
@@ -48,10 +60,16 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 		getObjectById("acExtenId").sendKeys(data.get("AddContactExten"));
 		getObjectById("acAlterPhone1").sendKeys(data.get("AddContactAlternativePhone"));
 		getObjectById("acAlterPhone2").sendKeys(data.get("AddContactAlternativePhone1"));
-		getObject("addContactButtonX").click();
+		System.out.println("hi");
+		//clickAction("addContactButtonX");
+		Thread.sleep(4000);
+		System.out.println("oye");
+		getObject("addContactButtonX1").click();
+		System.out.println("hey");
 		//waitForElementClickable(10, "nextS2X");
 		Thread.sleep(3000);
 		clickAction("nextS2X");
+		System.out.println("howdy");
 		//clickAction("nextS2X");
 		//getObject("nextS2X").click();
 		System.out.println("success on Step 2 Contact Information");
@@ -80,16 +98,26 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 	    getObject("allClientsX").click();
 	    // getObject("allClientsX").click();
 	    //getObjectByLinkText("allClientsLt").click();
-	    Thread.sleep(10000);
+	    Thread.sleep(20000);
 	    getObject("clientSearchFieldX").click();
 	    getObject("clientSearchFieldX").sendKeys(clientName);
 	    
-	    Thread.sleep(25000);
+	    TimeUnit.MINUTES.sleep(2);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
 	    System.out.println("the client appeared on the screen is" +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);
 	    System.out.println("new client is created successfully");
 	    
 	}
-
+	@AfterMethod
+    public void screenShot(ITestResult result){
+	if(result.getStatus()==ITestResult.FAILURE)
+	{
+		String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "AddNewClient");
+		String image = logger.addScreenCapture(screenshot_path);
+		logger.log(LogStatus.FAIL, "AddNewClient", image);
+	}
+	report.endTest(logger);
+	report.flush();
+}
 }

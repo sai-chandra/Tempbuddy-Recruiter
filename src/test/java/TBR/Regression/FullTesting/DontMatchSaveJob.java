@@ -40,7 +40,12 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
+        String copy = getObject("allJobsCopyRightX").getText();
+		System.out.println("here is the copyright value" +copy);
+        Thread.sleep(16000);
+		
+		waitForElementId(40, "allJobsCountValueId");
+	
 		
 		String str = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
@@ -85,7 +90,12 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 	    /*on Dashboard=>Jobs=>All Jobs*/
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
+		 String copy1 = getObject("allJobsCopyRightX").getText();
+			System.out.println("here is the copyright value" +copy1);
+		Thread.sleep(16000);
+		String str2 = getObjectById("allJobsCountValueId").getText();
+		System.out.println("here is the string value" +str2);
+		waitForElementId(40, "allJobsCountValueId");
 		
 		String str1 = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);

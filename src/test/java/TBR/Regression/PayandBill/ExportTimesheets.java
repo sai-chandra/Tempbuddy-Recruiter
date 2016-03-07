@@ -4,15 +4,27 @@ import java.io.IOException;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import TBR.TestUtil.CaptureScreenShot;
+
+import com.relevantcodes.extentreports.LogStatus;
+
 public class ExportTimesheets extends PayandBillRegressionSuitebase{
+	
 	@Test
 	public void exportTimesheetrough() throws IOException, InterruptedException{
-		initialize();
-		openBrowser();
-		driver.get(CONFIG.getProperty("testSiteName"));
-		login_Valid();
+
+		logger =report.startTest("ExportTimesheets");
+		
+		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
+		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "ExportTimesheets"));
+		logger.log(LogStatus.PASS, path);
 		
 		//get the current window handle
 		String parentHandle = driver.getWindowHandle();
@@ -52,4 +64,16 @@ public class ExportTimesheets extends PayandBillRegressionSuitebase{
 			Assert.assertEquals(message, "Nothing to export");
 			System.out.println("success, nothing to export");
 			}
+	
+		@AfterMethod
+		public void screenShot(ITestResult result){
+			if(result.getStatus()==ITestResult.FAILURE)
+			{
+		String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "ExportTimesheets");
+		String image = logger.addScreenCapture(screenshot_path);
+		logger.log(LogStatus.FAIL, "ExportTimesheets", image);
+			}
+			report.endTest(logger);
+			report.flush();
+		}
 }

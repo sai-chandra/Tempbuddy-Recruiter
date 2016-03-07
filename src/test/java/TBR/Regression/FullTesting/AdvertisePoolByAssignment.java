@@ -42,7 +42,7 @@ public class AdvertisePoolByAssignment extends FullTestingRegressionSuiteBase{
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		Thread.sleep(15000);
-		
+		explicitWaitId("allJobsCountValueId");
 		String str = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -99,7 +99,7 @@ public class AdvertisePoolByAssignment extends FullTestingRegressionSuiteBase{
 	  	LOGS.debug("click on All Jobs");
 	  	getObject("allJobsX").click();
 	  	Thread.sleep(15000);
-	  	
+	  	explicitWaitId("allJobsCountValueId");
 	  	String str1 = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);

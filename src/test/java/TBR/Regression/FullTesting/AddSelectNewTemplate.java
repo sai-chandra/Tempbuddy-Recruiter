@@ -12,7 +12,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
-/*Adding new Template*/
+/*Adding new Template and selecting that template for the job created*/
 public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 	
 	@DataProvider
@@ -41,6 +41,8 @@ public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
 		Thread.sleep(15000);
+		String copy1 = getObject("allJobsCopyRightX").getText();
+		System.out.println("here is the copyright "+copy1);
 		
 		String str = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
@@ -179,6 +181,8 @@ public class AddSelectNewTemplate extends FullTestingRegressionSuiteBase{
 	    /*on Dashboard=>Jobs=>All Jobs*/
 		LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
+		String copy = getObject("allJobsCopyRightX").getText();
+		System.out.println("here is the copyright "+copy);
 		Thread.sleep(15000);
 		
 		String str1 = getObjectById("allJobsCountValueId").getText();

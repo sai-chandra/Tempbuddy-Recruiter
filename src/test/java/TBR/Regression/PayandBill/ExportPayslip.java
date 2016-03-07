@@ -1,13 +1,27 @@
 package TBR.Regression.PayandBill;
 
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import TBR.TestUtil.CaptureScreenShot;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 public class ExportPayslip extends PayandBillRegressionSuitebase{
 		
 		@Test
 		public void exportPayslip() throws InterruptedException{
+			
+		logger =report.startTest("ExportPayslip");
+			
+		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "ExportPayslip"));
+		logger.log(LogStatus.PASS, path);
 		
 		 //moving on to payslip for generating new payslip
 		getObject("payBillX").click();
@@ -41,7 +55,17 @@ public class ExportPayslip extends PayandBillRegressionSuitebase{
 		//moving on to Create New ExportPaySlips Step 2 
 		//getObjectById("exportStyleSheetPayslipId").sendKeys("");
 		getObjectByCss("exportPayslipExportCss").click();
+		}
 		
-	}
-
+		@AfterMethod
+	    public void screenShot(ITestResult result){
+	    	if(result.getStatus()==ITestResult.FAILURE)
+	    	{
+		String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "ExportPayslip");
+		String image = logger.addScreenCapture(screenshot_path);
+		logger.log(LogStatus.FAIL, "ExportPayslip", image);
+	    	}
+	    	report.endTest(logger);
+	    	report.flush();
+		}
 }

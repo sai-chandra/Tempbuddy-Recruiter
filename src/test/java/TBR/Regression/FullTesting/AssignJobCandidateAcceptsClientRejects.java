@@ -44,7 +44,7 @@ public class AssignJobCandidateAcceptsClientRejects extends FullTestingRegressio
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
+		Thread.sleep(16000);
 		
 		explicitWaitId("allJobsCountValueId");
 		String str = getObjectById("allJobsCountValueId").getText();
@@ -88,11 +88,12 @@ public class AssignJobCandidateAcceptsClientRejects extends FullTestingRegressio
 	    Thread.sleep(15000);
 		
 		/*on Dashboard=>Jobs=>All Jobs*/
-	    getObject("jobsLinkX").click();
-		LOGS.debug("click on All Jobs");
+	    //getObject("jobsLinkX").click();
+		//LOGS.debug("click on All Jobs");
 		getObject("allJobsX").click();
 		Thread.sleep(15000);
-		explicitWaitId("allJobsCountValueId");
+		waitForElementId(50, "allJobsCountValueId");
+		//explicitWaitId("allJobsCountValueId");
 		String str1 = getObjectById("allJobsCountValueId").getText();
 		int allJobsValueAfterJobSaved = Integer.valueOf(str1.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs after saving a new one is: "+allJobsValueAfterJobSaved);

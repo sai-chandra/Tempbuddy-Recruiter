@@ -39,9 +39,13 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
-		explicitWaitId("allJobsCountValueId");
+		Thread.sleep(20000);
+		String copy1 = getObject("allJobsCopyRightX").getText();
+		System.out.println("here is the copyright "+copy1);
+	
 		String str = getObjectById("allJobsCountValueId").getText();
+		System.out.println(str);
+		System.out.println("hi");
 		int allJobsValueBefore = Integer.valueOf(str.split(" ")[7]);
 		LOGS.debug("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
 		System.out.println("the count value of all assigned and unassigned jobs before saving a new one is: "+allJobsValueBefore);
@@ -58,7 +62,7 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		waitForElementClickableId(10, "cNameId");
 	    System.out.println("moves on to Create New Job Step1: Client Information");
 	    getObjectById("cNameId").sendKeys(data.get("cnameS1"));
-	    //waitForElementClickableLinkText(10, "watsonsClientLt");
+	    waitForElementClickableLinkText(10, "watsonsClientLt");
 	    getObjectByLinkText("watsonsClientLt").click();
 	    
 	    //click on Clone Job
@@ -102,7 +106,7 @@ public class CloneJob extends FullTestingRegressionSuiteBase{
 		checkUnassignedJobIncrement(countUnassignJobsNumBefore, countUnassignJobsNumAfter,Integer.valueOf(data.get("cNumPos")));
 		
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
+		Thread.sleep(16000);
 		explicitWaitId("allJobsCountValueId");
 		
 		String str1 = getObjectById("allJobsCountValueId").getText();

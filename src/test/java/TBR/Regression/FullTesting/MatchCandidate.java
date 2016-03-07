@@ -41,7 +41,7 @@ public class MatchCandidate extends FullTestingRegressionSuiteBase{
 		/*for storing the count of total jobs in a string before the job is created*/
 		getObject("jobsLinkX").click();
 		getObject("allJobsX").click();
-		Thread.sleep(15000);
+		Thread.sleep(16000);
 		
 		explicitWaitId("allJobsCountValueId");
 		

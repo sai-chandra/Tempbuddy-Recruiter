@@ -4,14 +4,28 @@ import java.io.IOException;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import TBR.TestUtil.CaptureScreenShot;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 
 	public static String CandidateUsed = "Sherlock";
 	@Test
 	public void generatePaySlip() throws IOException, InterruptedException{
+
+		logger =report.startTest("GenerateNewPayslip");
+		
+		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "GenerateNewPayslip"));
+		logger.log(LogStatus.PASS, path);
 		
 		//moving on to payslip for generating new payslip
 		getObject("payBillX").click();
@@ -45,7 +59,17 @@ public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 	    String paySlipFirstCandidate = getObjectText("payslipsFirstCandidateX");
 	    Assert.assertEquals(paySlipFirstCandidate, CandidateUsed);
 	    System.out.println("candidates matched! payslip generated successfully");
-
+	    }
+	
+		@AfterMethod
+		public void screenShot(ITestResult result){
+			if(result.getStatus()==ITestResult.FAILURE)
+		{
+		String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "GenerateNewPayslip");
+		String image = logger.addScreenCapture(screenshot_path);
+		logger.log(LogStatus.FAIL, "GenerateNewPayslip", image);
+		}
+		report.endTest(logger);
+		report.flush();
 	}
-
 }

@@ -7,12 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import TBR.TestUtil.CaptureScreenShot;
 import TBR.TestUtil.TestUtil;
 
 public class AddNewCandidate extends CandidateRegressionSuiteBase{
+	
 	@DataProvider
 	public Object[][] getCreateNewCandidateData(){
 	return TestUtil.getDataIntoHashTable(CandidateExcel, "AddNewCandidate");
@@ -20,9 +26,16 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
 	
 	@Test(dataProvider="getCreateNewCandidateData")
     public void createNewCandidate(Hashtable<String, String>data) throws InterruptedException {
-	openBrowser();
-	driver.get(CONFIG.getProperty("testSiteName"));
-	login_Valid();
+    
+	logger =report.startTest("AddNewCandidate");
+    
+    /*browserUrl() opens up a browser, goes to Staging url & performs login*/
+	browserUrl();
+	
+	logger.log(LogStatus.INFO, "Browser started");
+	String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "AddNewCandidate"));
+	logger.log(LogStatus.PASS, path);
+	
 	Actions action = new Actions(driver);
 	getObject("candLinkX").click();
 	waitForElement(10, "addNewCandidateX");
@@ -143,8 +156,17 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
     System.out.println("candidate appeared on the screen is = "+candidateNameAppeared);
     Assert.assertEquals(candidateNameAppeared, candidateName);
     System.out.println("new candidate saved successfully");
-    
-    
-    
+    }
+	
+	@AfterMethod
+    public void screenShot(ITestResult result){
+	if(result.getStatus()==ITestResult.FAILURE)
+	{
+		String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "AddNewCandidate");
+		String image = logger.addScreenCapture(screenshot_path);
+		logger.log(LogStatus.FAIL, "AddNewCandidate", image);
 	}
+	report.endTest(logger);
+	report.flush();
+}
 }

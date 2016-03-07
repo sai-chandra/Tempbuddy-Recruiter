@@ -2,14 +2,28 @@ package TBR.Regression.PayandBill;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import TBR.TestUtil.CaptureScreenShot;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuitebase {
 	
 	public static String jobTitle = "AddJob";
 	@Test
 	public void generateNewTimesheetByAssignment() throws InterruptedException{
+		
+		logger =report.startTest("GenerateNewTimesheetByAssignment");
+		
+		/*browserUrl() opens up a browser, goes to Staging url & performs login*/
 		browserUrl();
+		
+		logger.log(LogStatus.INFO, "Browser started");
+		String path = logger.addScreenCapture(CaptureScreenShot.captureScreenShot(driver, "GenerateNewTimesheetByAssignment"));
+		logger.log(LogStatus.PASS, path);
 		
 		//clicks on Pay & Bill and then clicks on Timesheets
 		payBilltoTimesheet();
@@ -71,6 +85,15 @@ public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuiteb
 	    Assert.assertEquals(jobName, jobTitle);
 	    System.out.println("matched! timesheet is generated for "+jobName);
 	}
-
-
+		@AfterMethod
+		public void screenShot(ITestResult result){
+		if(result.getStatus()==ITestResult.FAILURE)
+		{
+			String screenshot_path= CaptureScreenShot.captureScreenShot(driver, "GenerateNewTimesheetByAssignment");
+			String image = logger.addScreenCapture(screenshot_path);
+			logger.log(LogStatus.FAIL, "GenerateNewTimesheetByAssignment", image);
+		}
+		report.endTest(logger);
+		report.flush();
+		}
 }

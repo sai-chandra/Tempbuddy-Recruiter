@@ -16,7 +16,7 @@ public class PayandBillRegressionSuitebase extends TestBase {
 	@AfterSuite
 	public void tearDown() throws InterruptedException{
 	//Thread.sleep(6000);
-	//driver.quit();
+	driver.quit();
 	}
 	
 	/*click on Pay and Bill and then Timesheet */
