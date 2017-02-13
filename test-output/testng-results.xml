@@ -2,31 +2,50 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="154427" started-at="2015-10-01T13:13:37Z" finished-at="2015-10-01T13:16:11Z">
+  <suite name="Default suite" duration-ms="132064" started-at="2017-02-13T18:28:33Z" finished-at="2017-02-13T18:30:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="154427" started-at="2015-10-01T13:13:37Z" finished-at="2015-10-01T13:16:11Z">
-      <class name="TBR.Regression_Testcases.JobsFlowAssignCandidate">
-        <test-method status="PASS" signature="regressionSuiteBase()[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@445b295b]" name="regressionSuiteBase" is-config="true" duration-ms="42" started-at="2015-10-01T14:13:37Z" finished-at="2015-10-01T14:13:37Z">
+    <test name="Default test" duration-ms="132064" started-at="2017-02-13T18:28:33Z" finished-at="2017-02-13T18:30:45Z">
+      <class name="TBR.Regression.Client.AddNewClient">
+        <test-method status="PASS" signature="clientSuiteBase()[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="clientSuiteBase" is-config="true" duration-ms="41" started-at="2017-02-13T18:28:33Z" finished-at="2017-02-13T18:28:33Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- regressionSuiteBase -->
-        <test-method status="PASS" signature="jobsFlowAssignCandidate(java.util.Hashtable)[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@445b295b]" name="jobsFlowAssignCandidate" duration-ms="154409" started-at="2015-10-01T14:13:37Z" data-provider="getJobsAssignCandidateData" finished-at="2015-10-01T14:16:11Z">
+        </test-method> <!-- clientSuiteBase -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="beforeClass" is-config="true" duration-ms="61" started-at="2017-02-13T18:28:33Z" finished-at="2017-02-13T18:28:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="addNewClient(java.util.Hashtable)[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="addNewClient" duration-ms="131753" started-at="2017-02-13T18:28:33Z" data-provider="getAddNewClientData" finished-at="2017-02-13T18:30:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{CandidateName=jack, CandidateAction=reject, BookingFeeStep3=0, FeeFrequencyStep3=Hourly, TagsStep5=, PayRateStep3=10, CategoryStep5=Driver, cPurchaseS=abc, cnameS1=Watsons, cMinBillHours=, runmode=, BillRateStep3=20, cTitleS2=jobLatestSep, cDescription=abc, BillingTypeStep3=Per hour, cNumPos=1}]]>
+                <![CDATA[{Extension=1237, AddContactExten=126, PhoneNumber=353899647554, Name=BurgerKingClient101, Address=Parnell Street, Dublin 4, AddContactPhone=353899657555, ExternalRef=126, runmode=, AddContactAlternativePhone=12348, AddContactEmail=s.padmanabuni@tempbuddy.co, AddContactName=BurgerKingApprover101, AddClientAddress=Dublin 1, Parnell Street, CompanyPosition=Project Manager, AddLocationLabel=BurgerKingLocation, AddContactAlternativePhone1=678913, AddClientsPhones=35381234568}]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- jobsFlowAssignCandidate -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TBR.Regression_Testcases.JobsFlowAssignCandidate@445b295b]" name="tearDown" is-config="true" duration-ms="17" started-at="2015-10-01T14:16:11Z" finished-at="2015-10-01T14:16:11Z">
+        </test-method> <!-- addNewClient -->
+        <test-method status="PASS" signature="screenShot(org.testng.ITestResult)[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="screenShot" is-config="true" duration-ms="190" started-at="2017-02-13T18:30:45Z" finished-at="2017-02-13T18:30:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addNewClient status=SUCCESS method=AddNewClient.addNewClient(java.util.Hashtable)[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- screenShot -->
+        <test-method status="PASS" signature="close()[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="close" is-config="true" duration-ms="30" started-at="2017-02-13T18:30:45Z" finished-at="2017-02-13T18:30:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TBR.Regression.Client.AddNewClient@fa36558]" name="tearDown" is-config="true" duration-ms="0" started-at="2017-02-13T18:30:45Z" finished-at="2017-02-13T18:30:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TBR.Regression_Testcases.JobsFlowAssignCandidate -->
+      </class> <!-- TBR.Regression.Client.AddNewClient -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

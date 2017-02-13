@@ -1,5 +1,7 @@
 package TBR.Regression.PayandBill;
 
+import java.sql.SQLException;
+
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -11,7 +13,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class GenerateClientTimesheetApproval extends PayandBillRegressionSuitebase {
 	@Test
-	public void generateClientTimeSheetApproval() throws InterruptedException{
+	public void generateClientTimeSheetApproval() throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("ExportTimesheets");
 		

@@ -1,6 +1,7 @@
 package TBR.Regression.Worker;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Test;
@@ -8,7 +9,7 @@ import org.testng.annotations.Test;
 public class CandidatePoolsByAssignment extends CandidateRegressionSuiteBase{
 	//Candidate pools by Assignment
 	@Test
-	public void candidatesPoolByAssignment() throws IOException, InterruptedException{
+	public void candidatesPoolByAssignment() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 	browserUrl();
     
 	getObject("candLinkX").click();

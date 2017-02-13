@@ -1,5 +1,7 @@
 package TBR.Regression.PayandBill;
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -14,7 +16,7 @@ public class GenerateNewTimesheetByAssignment extends PayandBillRegressionSuiteb
 	
 	public static String jobTitle = "AddJob";
 	@Test
-	public void generateNewTimesheetByAssignment() throws InterruptedException{
+	public void generateNewTimesheetByAssignment() throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("GenerateNewTimesheetByAssignment");
 		

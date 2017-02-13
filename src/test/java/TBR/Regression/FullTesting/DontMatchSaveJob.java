@@ -1,5 +1,6 @@
 package TBR.Regression.FullTesting;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import org.testng.Assert;
@@ -21,7 +22,7 @@ public class DontMatchSaveJob extends FullTestingRegressionSuiteBase{
 	}
     
 	@Test(dataProvider="getSaveJobData")
-	public void dontMatchSaveJob(Hashtable<String, String> data) throws InterruptedException{
+	public void dontMatchSaveJob(Hashtable<String, String> data) throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("DontMatchSaveJob");
 		

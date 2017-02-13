@@ -1,5 +1,6 @@
 package TBR.Regression.FullTesting;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +26,7 @@ public class StrictOffAlignOn extends FullTestingRegressionSuiteBase{
 	}
 	
 	@Test(dataProvider="getStrictOffAlignOnData")
-	public void strictOffAlignOn(Hashtable<String, String>data) throws InterruptedException{
+	public void strictOffAlignOn(Hashtable<String, String>data) throws InterruptedException, ClassNotFoundException, SQLException{
 		
 	/*browserUrl() opens up a browser, goes to Staging url & performs login.*/
 	browserUrl();

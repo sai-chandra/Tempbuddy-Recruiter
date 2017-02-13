@@ -5,12 +5,12 @@
 <suite-files>
    <suite-file path="./Regression_FullTesting.xml"/>
   </suite-files>
-  <!-- <suite-files>
+  <suite-files>
    <suite-file path="./Regression_Client.xml"/>
   </suite-files>
   <suite-files>
    <suite-file path="./Regression_Worker.xml"/>
-  </suite-files> -->
+  </suite-files>
   <!-- <suite-files>
    <suite-file path="./Regression_PayandBill.xml"/>
   </suite-files> -->

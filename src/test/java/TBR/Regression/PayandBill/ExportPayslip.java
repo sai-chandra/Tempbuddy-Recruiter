@@ -1,5 +1,7 @@
 package TBR.Regression.PayandBill;
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class ExportPayslip extends PayandBillRegressionSuitebase{
 		
 		@Test
-		public void exportPayslip() throws InterruptedException{
+		public void exportPayslip() throws InterruptedException, ClassNotFoundException, SQLException{
 			
 		logger =report.startTest("ExportPayslip");
 			

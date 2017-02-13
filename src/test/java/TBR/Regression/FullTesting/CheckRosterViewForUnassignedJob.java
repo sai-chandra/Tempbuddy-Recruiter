@@ -1,5 +1,6 @@
 package TBR.Regression.FullTesting;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import org.testng.annotations.DataProvider;
@@ -16,7 +17,7 @@ public class CheckRosterViewForUnassignedJob extends FullTestingRegressionSuiteB
 	}
 	
 	@Test(dataProvider= "getCheckRosterViewForUnassignedJobData")
-	public void checkRosterViewForUnassignedJob(Hashtable<String, String>data) throws InterruptedException{
+	public void checkRosterViewForUnassignedJob(Hashtable<String, String>data) throws InterruptedException, ClassNotFoundException, SQLException{
 	
 	/*browserUrl() opens up a browser, goes to Staging url & performs login.*/
 	browserUrl();

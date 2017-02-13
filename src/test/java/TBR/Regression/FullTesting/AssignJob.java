@@ -1,5 +1,6 @@
 package TBR.Regression.FullTesting;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import org.testng.Assert;
@@ -25,7 +26,7 @@ public class AssignJob extends FullTestingRegressionSuiteBase{
 	}
     
 	@Test(dataProvider="getAssignJobData")
-	public void assignJobToCandidate(Hashtable<String, String> data) throws InterruptedException{
+	public void assignJobToCandidate(Hashtable<String, String> data) throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("AssignJob");
 		

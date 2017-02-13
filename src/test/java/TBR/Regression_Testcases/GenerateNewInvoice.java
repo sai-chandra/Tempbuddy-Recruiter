@@ -1,5 +1,7 @@
 package TBR.Regression_Testcases;
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,7 +9,7 @@ import org.testng.annotations.Test;
 public class GenerateNewInvoice extends RegressionSuiteBase {
 	public static String clientUsed = "Watsons";
 	@Test
-	public void generateNewInvoice(){
+	public void generateNewInvoice() throws ClassNotFoundException, SQLException{
 		
 		browserUrl();
 		

@@ -1,13 +1,14 @@
 package TBR.Regression.Worker;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.testng.annotations.Test;
 
 public class ExportCandidates extends CandidateRegressionSuiteBase {
 	
 	@Test
-	public void exportCandidates() throws IOException, InterruptedException{
+	public void exportCandidates() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 		browserUrl();
 		
 		//moving on to payslip for generating new payslip

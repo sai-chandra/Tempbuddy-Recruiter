@@ -1,5 +1,6 @@
 package TBR.Regression.Client;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +21,7 @@ public class AddNewClient extends ClientRegressionSuiteBase{
     return TestUtil.getDataIntoHashTable(ClientsExcel, "AddNewClient");
 	}
 	@Test(dataProvider="getAddNewClientData")
-	public void addNewClient(Hashtable<String, String>data) throws InterruptedException{
+	public void addNewClient(Hashtable<String, String>data) throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("AddNewClient");
 		
@@ -102,11 +103,28 @@ public class AddNewClient extends ClientRegressionSuiteBase{
 	    getObject("clientSearchFieldX").click();
 	    getObject("clientSearchFieldX").sendKeys(clientName);
 	    
-	    TimeUnit.MINUTES.sleep(2);
+	    TimeUnit.MINUTES.sleep(1);
 	    String clientAppearedOnScreen = getObject("clientMatchSearchX").getText();
 	    System.out.println("the client appeared on the screen is" +clientAppearedOnScreen);
 	    Assert.assertEquals(clientAppearedOnScreen, clientName);
 	    System.out.println("new client is created successfully");
+	    
+	    //New Test Code:
+	    String sqlQuery = "Select * from TempBuddy.Clients ORDER BY id DESC LIMIT 1";
+	    statement = con.createStatement();
+	    result = statement.executeQuery(sqlQuery);
+	    
+	    System.out.println("following is the result:");
+	    System.out.println(result);
+	    
+	    //Database Testing:
+	    result.next();
+	    if(!result.getString("name").equals(data.get("Name")))
+	    	System.out.println("Name is stored wrong");
+	    else{
+	    	System.out.println("Name is stored correct");
+	    }
+	    
 	    
 	}
 	@AfterMethod

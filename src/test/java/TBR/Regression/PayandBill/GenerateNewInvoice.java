@@ -1,5 +1,7 @@
 package TBR.Regression.PayandBill;
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -14,7 +16,7 @@ public class GenerateNewInvoice extends PayandBillRegressionSuitebase{
 	
 	public static String clientUsed = "Watsons";
 	@Test
-	public void generateNewInvoice() throws InterruptedException{
+	public void generateNewInvoice() throws InterruptedException, ClassNotFoundException, SQLException{
 		
 		logger =report.startTest("GenerateNewInvoice");
 		

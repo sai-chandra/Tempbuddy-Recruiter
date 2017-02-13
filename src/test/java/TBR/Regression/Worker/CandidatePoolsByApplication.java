@@ -1,6 +1,7 @@
 package TBR.Regression.Worker;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +9,7 @@ import org.testng.annotations.Test;
 public class CandidatePoolsByApplication extends CandidateRegressionSuiteBase{
 	//Candidate Pools By Applications...
 	@Test
-	public void candidatesPoolByApplication() throws IOException, InterruptedException{
+	public void candidatesPoolByApplication() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 	browserUrl();
 	
 	waitForElement(5, "candLinkX");

@@ -1,5 +1,6 @@
 package TBR.Regression.Worker;
 
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import org.openqa.selenium.Keys;
@@ -25,7 +26,7 @@ public class AddNewCandidate extends CandidateRegressionSuiteBase{
 	}
 	
 	@Test(dataProvider="getCreateNewCandidateData")
-    public void createNewCandidate(Hashtable<String, String>data) throws InterruptedException {
+    public void createNewCandidate(Hashtable<String, String>data) throws InterruptedException, ClassNotFoundException, SQLException {
     
 	logger =report.startTest("AddNewCandidate");
     

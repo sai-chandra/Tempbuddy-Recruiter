@@ -1,6 +1,7 @@
 package TBR.Rough_Work;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import TBR.TestBase.TestBase;
 
 public class Roster extends TestBase {
 	@Test
-	public void roster() throws IOException, InterruptedException{
+	public void roster() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 		initialize();
 		browserUrl();
 		

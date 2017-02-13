@@ -1,6 +1,7 @@
 package TBR.Regression.PayandBill;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class ExportTimesheets extends PayandBillRegressionSuitebase{
 	
 	@Test
-	public void exportTimesheetrough() throws IOException, InterruptedException{
+	public void exportTimesheetrough() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 
 		logger =report.startTest("ExportTimesheets");
 		

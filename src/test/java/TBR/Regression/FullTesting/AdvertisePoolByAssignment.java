@@ -1,6 +1,7 @@
 package TBR.Regression.FullTesting;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 import org.testng.Assert;
@@ -22,7 +23,7 @@ public class AdvertisePoolByAssignment extends FullTestingRegressionSuiteBase{
 	}
 	
 	@Test(dataProvider="getAdvertiseJobPoolByAssignmentData")
-	public void advertisePoolByAssignment(Hashtable<String, String> data) throws InterruptedException, IOException{
+	public void advertisePoolByAssignment(Hashtable<String, String> data) throws InterruptedException, IOException, ClassNotFoundException, SQLException{
         
 		logger =report.startTest("AdvertisePoolByAssignment");
 		

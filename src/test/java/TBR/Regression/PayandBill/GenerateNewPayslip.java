@@ -1,6 +1,7 @@
 package TBR.Regression.PayandBill;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -16,7 +17,7 @@ public class GenerateNewPayslip extends PayandBillRegressionSuitebase {
 
 	public static String CandidateUsed = "Sherlock";
 	@Test
-	public void generatePaySlip() throws IOException, InterruptedException{
+	public void generatePaySlip() throws IOException, InterruptedException, ClassNotFoundException, SQLException{
 
 		logger =report.startTest("GenerateNewPayslip");
 		

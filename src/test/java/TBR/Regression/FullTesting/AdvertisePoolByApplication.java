@@ -1,6 +1,7 @@
 package TBR.Regression.FullTesting;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Hashtable;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +26,7 @@ public class AdvertisePoolByApplication extends FullTestingRegressionSuiteBase{
 	}
 	
 	@Test(dataProvider="getAdvertiseJobPoolByApplicationData")
-	public void advertisePoolByApplication(Hashtable<String, String> data) throws InterruptedException, IOException{
+	public void advertisePoolByApplication(Hashtable<String, String> data) throws InterruptedException, IOException, ClassNotFoundException, SQLException{
     
 		logger =report.startTest("AdvertisePoolByApplication");
 		

@@ -3,6 +3,11 @@ package TBR.TestBase;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -43,6 +48,9 @@ public class TestBase extends ParallelBaseClass {
 	public static Properties CONFIG = null;
 	public static Properties OR = null;
 	public static WebDriver driver = null;
+	public static Connection con = null;
+	public static Statement statement = null;
+	public static ResultSet result = null;
 	//public static WebDriver driver1 = null;
 	public static Xls_Reader excel = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\TBR\\Xlsdata_Files\\TestData.xlsx");
 	public static Xls_Reader JobsExcel = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\TBR\\Xlsdata_Files\\Jobs.xlsx");
@@ -106,10 +114,13 @@ public class TestBase extends ParallelBaseClass {
 	
 	
 	//Opening a browser, takes to url and Logins
-	public void browserUrl(){
+	public void browserUrl() throws ClassNotFoundException, SQLException{
+		
 		openBrowser();
 		driver.get(CONFIG.getProperty("testSiteName"));
 		login_Valid();
+		//added latest
+		connectDB();
 	}
 	
 	     
@@ -675,5 +686,31 @@ public class TestBase extends ParallelBaseClass {
 				Actions action = new Actions(driver);
 				action.moveToElement(elementCss).click().perform();
 				}
+				
+				//Database Connection
+				public void connectDB() throws ClassNotFoundException, SQLException {
+					
+					/*Class is a class in Java
+					 * forName() is a method in Class which we use to pass the driver to connect the DB
+					 * */
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					System.out.println("Driver loaded");
+					
+					/*DriverManager is another class
+					 * java.sql package will help us to connect with the DB
+					 * We need to mention the Connection String
+					 * getConnection() is a method in DriverManager, which will establish the connection
+					 * to the given DB URL
+					 * Will pass the following:
+					 * "jdbc:mysql://hostname:port/dbname","username","password"
+					 * import Connection from java.sql*/
+				     con = DriverManager.getConnection("jdbc:mysql://130.211.97.174:3306/TempBuddy","sai_db_dev","UrYBv57nGATwEanL");
+			        System.out.println("connected to MySQL DB");
+			        /*1. Should use con object and call an method called createStatement()
+			         * 2. Statement is separate interface in Java which will help us to execute any
+			         * DB queries 
+			         * 3. Statement Interface is imported from java.sql package
+			         * 4. Storing createStatement(); object into the Statement reference */
 
 			}
+}
