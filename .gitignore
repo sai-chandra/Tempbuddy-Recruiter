@@ -1,0 +1,4 @@
+target/test-classes/TBR/Logs/*
+target/test-classes/
+test-output/
+target/
