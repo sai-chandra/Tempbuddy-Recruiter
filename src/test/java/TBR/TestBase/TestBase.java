@@ -60,7 +60,7 @@ public class TestBase extends ParallelBaseClass {
 	
 	public void initialize() throws IOException{
 		if(!isInitialized){
-		//then initializing logs.
+		//then initializing logs..
 			LOGS = Logger.getLogger("devpinoyLogger");
 		
 		//Now Initializing configuration properties file
